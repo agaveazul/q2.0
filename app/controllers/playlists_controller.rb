@@ -43,6 +43,7 @@ class PlaylistsController < ApplicationController
   end
 
   def update_song
+    @votes = Vote.get_votes(params[:playlist_id])
     access = Authorization.find_by(playlist_id: params[:id], user_id: session[:user_id]).status
 
     if access == "Host"

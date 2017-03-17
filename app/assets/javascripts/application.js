@@ -125,7 +125,7 @@ $(document).on("ready", function(){
       dataType: 'json'
     }).done(function(data){
       console.log(data);
-      var albumsContainer = $('<div>').attr('id', 'search_results_albums')
+      var albumsContainer = $('<div>').attr('id', 'search_results_albums');
       var albumsHeader = $('<div>').addClass('header').html('Albums');
       $(albumsContainer).append(albumsHeader);
 
@@ -134,14 +134,22 @@ $(document).on("ready", function(){
       $(artistsContainer).append(artistsHeader);
 
 
-      var tracksContainer = $('<div>').attr('id', 'search_results_tracks')
+      var tracksContainer = $('<div>').attr('id', 'search_results_tracks');
       var tracksHeader = $('<div>').addClass('header').html('Tracks');
       $(tracksContainer).append(tracksHeader);
 
-      var allAlbums = $('div').addClass('all-albums').css('display', 'none')
+      var allAlbums = $('<div>').addClass('all-albums').css('display', 'none');
+      $('body').append(allAlbums);
 
-      var allArtists = $('div').addClass('all-artists').css('display', 'none')
+      var allArtists = $('<div>').addClass('all-artists').css('display', 'none');
+      $('body').append(allArtists);
 
+      var allTracks = $('<div>').addClass('all-tracks').css('display', 'none');
+      $('body').append(allTracks);
+
+      // var everything = $('<div>').addClass('search-results-container');
+      //
+      // $('#search_results').replaceWith($(everything).append(albumsContainer).append(artistsContainer).append(tracksContainer));
 
 
       $('#search_results').html('').append(albumsContainer).append(artistsContainer).append(tracksContainer);
@@ -171,6 +179,20 @@ $(document).on("ready", function(){
       }
         $('#search_results_albums').append(contain);
 
+        var contain = $('<div>').addClass('contain');
+        for (var i = 0; i < data['albums']['data'].length; i++){
+          var div = $('<div>').addClass('album').attr('album_title', data["albums"]['data'][i]['title']).attr('album-id', data["albums"]['data'][i]['id']);
+          var image_container = $('<div>').addClass('album-img-container');
+          var img = $('<img>').attr('src',data["albums"]['data'][i]["cover_medium"]).addClass('album-img');
+          image_container =$(image_container).append(img);
+          var album_title = $('<div>').addClass('album-title').html(data["albums"]['data'][i]["title"]);
+
+          $(contain).append((div).append(image_container).append(album_title));
+
+        }
+        $('.all-albums').append(contain);
+
+
       var contain = $('<div>').addClass('contain');
       for (var i = 0; i < 5; i++){
 
@@ -184,6 +206,19 @@ $(document).on("ready", function(){
 
       }
         $('#search_results_artists').append(contain);
+
+        var contain = $('<div>').addClass('contain');
+        for (var i = 0; i < data['artists']['data'].length; i++){
+          var div = $('<div>').addClass('artist').attr('artist-name', data["artists"]['data'][i]['name']).attr('artist-id', data["artists"]['data'][i]['id']);
+          var image_container = $('<div>').addClass('artist-img-container');
+          var img = $('<img>').attr('src',data["artists"]['data'][i]["picture_medium"]).addClass('artist-img');
+          image_container =$(image_container).append(img);
+          var artist_title = $('<div>').addClass('artist-title').html(data["artists"]['data'][i]["name"]);
+
+          $(contain).append((div).append(image_container).append(artist_title));
+
+        }
+        $('.all-artists').append(contain);
     })
    })
 
@@ -212,6 +247,18 @@ $(document).on("ready", function(){
       }
 
      })
+   })
+
+   $("body").delegate('.header', 'click', function(){
+     if ($(this).html().trim() === 'Albums'){
+      //  var allAlbums = $('.all-albums');
+      //  $('#search_results').replaceWith($('.all-albums').fadeIn('slow', function(){}));
+      $('#search_results').html($('.all-albums').html()).fadeIn('slow', function(){});
+     }
+     else if ($(this).html().trim() === 'Artists'){
+      //  $('#search_results').replaceWith($('.all-albums').fadeIn('slow', function(){}));
+      $('#search_results').html($('.all-albums').html()).fadeIn('slow', function(){});
+     }
    })
 
    $("body").delegate('.artist','click',function(event) {
