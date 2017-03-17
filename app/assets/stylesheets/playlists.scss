@@ -64,6 +64,12 @@ img.track-img {
   vertical-align: top;
 }
 
+.inner-album {
+  display: inline-block;
+  width: 20%;
+  vertical-align: top;
+}
+
 .album-img-container{
   width: 90%;
   margin: auto;
@@ -97,6 +103,13 @@ img.track-img {
 }
 
 .artist{
+  display: inline-block;
+  width: 20%;
+  margin: auto;
+  vertical-align: top;
+}
+
+.inner-artist{
   display: inline-block;
   width: 20%;
   margin: auto;
