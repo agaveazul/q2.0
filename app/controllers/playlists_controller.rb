@@ -44,9 +44,11 @@ $counter = 0
       end
   end
 
+
   def update_song_playing
     SuggestedSong.find(params[:song_id]).update_attribute(:status, "playing")
   end
+
 
   def update_song
       SuggestedSong.find(params[:song_id]).update_attribute(:status, "played")
