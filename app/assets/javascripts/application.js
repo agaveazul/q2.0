@@ -87,6 +87,7 @@ $(document).on("ready", function(){
 
   var notify = $("<div>").attr('class', 'notify').css('background-color', 'red').css('display', 'hidden').css('text-align', 'center');
 
+  // User add a song to SuggeatedSong
   $("body").delegate('.suggest_song1', 'click', function (event){
        event.preventDefault();
        console.log("this button was clicked");
@@ -113,6 +114,7 @@ $(document).on("ready", function(){
        })
   });
 
+  // Inital Search submit
   $("body").delegate('.search-submit','click',function(event) {
     event.preventDefault();
     var searchValue = $('#search').val();
@@ -132,10 +134,18 @@ $(document).on("ready", function(){
       var artistsHeader = $('<div>').addClass('header').html('Artists');
       $(artistsContainer).append(artistsHeader);
 
-
       var tracksContainer = $('<div>').attr('id', 'search_results_tracks');
       var tracksHeader = $('<div>').addClass('header').html('Tracks');
       $(tracksContainer).append(tracksHeader);
+
+      var albumsLength = data['albums']['data'].length;
+      console.log(albumsLength);
+
+      var artistsLength = data['artists']['data'].length;
+      console.log(artistsLength);
+
+      var allArtists = $('<div>').addClass('all-artists').css('display', 'none');
+      $('body').append(allArtists);
 
       var allAlbums = $('<div>').addClass('all-albums').css('display', 'none');
       $('body').append(allAlbums);
@@ -143,8 +153,7 @@ $(document).on("ready", function(){
       var allTracks = $('<div>').addClass('all-tracks').css('display', 'none');
       $('body').append(allTracks);
 
-      var allArtists = $('<div>').addClass('all-artists').css('display', 'none');
-      $('body').append(allArtists);
+
 
       $('#search_results').html('')
 
@@ -180,7 +189,15 @@ $(document).on("ready", function(){
       }
 
       var contain = $('<div>').addClass('contain');
-      for (var i = 0; i < 5; i++){
+
+      if (albumsLength < 5) {
+        var i_albumsLength = albumsLength;
+      }
+      else {
+        var i_albumsLength = 5;
+      }
+      // Loop through albums
+      for (var i = 0; i < i_albumsLength; i++){
         var div = $('<div>').addClass('album').attr('album_title', data["albums"]['data'][i]['title']).attr('album-id', data["albums"]['data'][i]['id']);
         var image_container = $('<div>').addClass('album-img-container');
         var img = $('<img>').attr('src',data["albums"]['data'][i]["cover_medium"]).addClass('album-img');
@@ -207,7 +224,15 @@ $(document).on("ready", function(){
 
 
       var contain = $('<div>').addClass('contain');
-      for (var i = 0; i < 5; i++){
+
+      if (artistsLength < 5) {
+        var i_artistsLength = artistsLength;
+      }
+      else {
+        var i_artistsLength = 5;
+      }
+      // Loop through artists
+      for (var i = 0; i < i_artistsLength; i++){
 
         var div = $('<div>').addClass('artist').attr('artist-name', data["artists"]['data'][i]['name']).attr('artist-id', data["artists"]['data'][i]['id']);
         var image_container = $('<div>').addClass('artist-img-container');
@@ -235,6 +260,45 @@ $(document).on("ready", function(){
     })
    })
 
+   // Display the search results for artist
+   $("body").delegate('.artist','click',function(event) {
+   event.preventDefault();
+   console.log("this button was clicked!");
+   var artist_id = parseInt($(this).attr('artist-id'));
+
+
+  $.ajax({
+    url: '/playlists/' + playlistId + '/suggestedsongs/get_artist',
+    method: 'get',
+    data: {artist: artist_id},
+    dataType: 'json'
+  }).done(function(data){
+
+   console.log(data);
+
+   $('#search_results_tracks').html("");
+
+   for (var i = 0; i < data["artists"]['data'].length; i++){
+
+   var icon = $('<i>').attr('class','fa fa-plus-circle').attr('aria-hidden', 'true')
+   var div = $('<div>').attr('class','song-listing suggest_song1').attr('song_id', data["artists"]['data'][i]['id']).attr('song_name', data["artists"]['data'][i]['title']).attr('artist', data["artists"]['data'][i]["artist"]["name"]);
+
+   var image_container = $('<div>').addClass('track-img-container');
+   var img = $('<img>').attr('src',data['artists']['data'][i]['album']['cover_medium']).addClass('track-img');
+   image_container =$(image_container).append(img).append(icon);
+
+   $(div).append(image_container);
+
+   var trackInfo = $('<div>').attr('class','track-info')
+   var trackTitle = $('<div>').html(data["artists"]['data'][i]["title"])
+   var trackArtist = $('<div>').attr('class', 'trackArtist').html(data["artists"]['data'][i]["artist"]["name"]);
+
+   $(trackInfo).append(trackTitle).append(trackArtist);
+   $(div).append(trackInfo);
+   $('#search_results_tracks').append(backButton).append(div);
+   }
+   })
+  })
 
 
    $("body").delegate('.album','click',function(event) {
@@ -368,6 +432,8 @@ $(document).on("ready", function(){
      })
    })
 
+
+
    $("body").delegate('.back-button','click',function(event) {
      event.preventDefault();
      var searchValue = $('#search').val();
@@ -394,66 +460,14 @@ $(document).on("ready", function(){
        var tracksHeader = $('<div>').addClass('header').html('Tracks');
        $(tracksContainer).append(tracksHeader);
 
+       var albumsLength = data['albums']['data'].length;
+       console.log(albumsLength);
 
-       $('#search_results').html('').append(albumsContainer).append(artistsContainer).append(tracksContainer);
-
-       // Display the search results for artist  LOOK FOR THISSSSS!!!!!!!!!!!!!
-    $("body").delegate('.artist','click',function(event) {
-    event.preventDefault();
-
-    console.log("this button was clicked!");
-   //  console.log($(this).parent().text());
-    var artist_id = parseInt($(this).attr('artist-id'));
-
-    console.log(artist_id);
-
-    $.ajax({
-      url: '/playlists/' + playlistId + '/suggestedsongs/get_artist',
-      method: 'get',
-      data: {artist: artist_id},
-      dataType: 'json'
-    }).done(function(data){
-
-      console.log(data);
-
-     $('#search_results').html("");
-
-     for (var i = 0; i < data["artists"]['data'].length; i++){
-
-       var icon = $('<i>').attr('class','fa fa-plus-circle').attr('aria-hidden', 'true')
-       var div = $('<div>').attr('class','song-listing suggest_song1').attr('song_id', data["artists"]['data'][i]['id']).attr('song_name', data["artists"]['data'][i]['title']).attr('artist', data["artists"]['data'][i]["artist"]["name"]);
-
-       var image_container = $('<div>').addClass('track-img-container');
-       var img = $('<img>').attr('src',data['artists']['cover_medium']).addClass('track-img');
-       image_container =$(image_container).append(img).append(icon);
-
-       $(div).append(image_container);
-
-       var trackInfo = $('<div>').attr('class','track-info')
-       var trackTitle = $('<div>').html(data["artists"]['data'][i]["title"])
-       var trackArtist = $('<div>').attr('class', 'trackArtist').html(data["artists"]['data'][i]["artist"]["name"]);
-
-       $(trackInfo).append(trackTitle).append(trackArtist);
-       $(div).append(trackInfo);
-       $('#search_results').append(backButton).append(div);
-     }
-     })
-     })
+       var artistsLength = data['artists']['data'].length;
+       console.log(artistsLength);
 
 
-
-
-    //  for (var i = 0; i < data['artists']['data'].length; i++){
-    //    var button = $('<button>')
-    //    var button = $(button).attr('class', 'suggest_song1');
-    //    var button = $(button).html('+');
-    //    var div = $('<div>').attr('class','song-listing').attr('song_id', data["artists"]["data"][i]['id']).attr('song_name', data["artists"]["data"][i]['title']).attr('artist', data["artists"]["data"][i]['artist']["name"]);
-    //    $(div).html(data["artists"]["data"][i]['title']).append(' - ').append(data["artists"]["data"][i]['artist']["name"]).append(button);
-    //    $('#search_results').append(backButton).append(div);
-    //  }
-
-  //   })
-  // })
+       $('#search_results').html('').append(artistsContainer).append(albumsContainer).append(tracksContainer);
 
        //tracks displayed with album cover when back button clicked
        for (var i = 0; i < data['tracks']['data'].length; i++){
@@ -476,9 +490,14 @@ $(document).on("ready", function(){
          $('#search_results_tracks').append(div);
        }
 
-
+       if (albumsLength < 5) {
+         var i_albumsLength = albumsLength;
+       }
+       else {
+         var i_albumsLength = 5;
+       }
        var contain = $('<div>').addClass('contain');
-       for (var i = 0; i < 5; i++){
+       for (var i = 0; i < i_albumsLength; i++){
          var div = $('<div>').addClass('album').attr('album_title', data["albums"]['data'][i]['title']).attr('album-id', data["albums"]['data'][i]['id']);
          var image_container = $('<div>').addClass('album-img-container');
          var img = $('<img>').attr('src',data["albums"]['data'][i]["cover_medium"]).addClass('album-img');
@@ -490,9 +509,14 @@ $(document).on("ready", function(){
        }
          $('#search_results_albums').append(contain);
 
-
+       if (artistsLength < 5) {
+         var i_artistsLength = artistsLength;
+       }
+       else {
+         var i_artistsLength = 5;
+       }
        var contain = $('<div>').addClass('contain');
-       for (var i = 0; i < 5; i++){
+       for (var i = 0; i < i_artistsLength; i++){
 
          var div = $('<div>').addClass('artist').attr('artist-name', data["artists"]['data'][i]['name']).attr('artist-id', data["artists"]['data'][i]['id']);
          var image_container = $('<div>').addClass('artist-img-container');
