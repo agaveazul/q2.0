@@ -422,3 +422,19 @@ html{
 .song-listing {
   border-bottom: rgba(232, 2, 103,0.7);
 }
+
+.blocked-message {
+    border-radius: 50px;
+    padding: 20px;
+    margin-top: 15%;
+    text-align: center;
+    color: white;
+}
+
+.emoji {
+    height: 95px;
+    width: 90px;
+    display: inline-block;
+    margin-top: 4px;
+    margin-bottom: 10px; 
+}

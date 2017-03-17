@@ -11,6 +11,7 @@ $counter = 0
   def show
     SuggestedSong.where(playlist_id: params[:id], status: "playing").update_all(status: "que")
     @access = Authorization.find_by(playlist_id: params[:id], user_id: session[:user_id])
+    # binding.pry
     if @access
       @access = @access.status
     else
@@ -33,6 +34,7 @@ $counter = 0
 
     @unplayedsongs = SuggestedSong.where(playlist_id: @playlist_q.id, status: "played").order(status: :desc, net_vote: :desc)
     @playedsongs = SuggestedSong.where(playlist_id: @playlist_q.id, status: "played")
+
 
   end
 
