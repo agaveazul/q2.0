@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       @hosted << auth.playlist if auth.playlist
     end
 
-    guest_auths = Authorization.where(user_id: session[:user_id], status: "Guest")
+    guest_auths = Authorization.where(user_id: session[:user_id], status: "Guest").or(Authorization.where(user_id: session[:user_id], status: "Forbidden"))
     @guest = []
     guest_auths.each do |auth|
       @guest << auth.playlist if auth.playlist
