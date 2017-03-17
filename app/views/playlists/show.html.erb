@@ -1,3 +1,11 @@
+<% if @access == "Forbidden" %>
+
+<div class="pink lighten-2 blocked-message">
+  <h1>Sorry, you have been blocked from viewing this playlist.</h1>
+  <div><%= image_tag(("emoji.png"), :class => "emoji") %></div>
+</div>
+
+<% elsif @access == "Host" || @access == "Guest" %>
   <div>
   <div class="playlist-details">
   <div class="playlist-name"><%= @playlist_q.name %>&nbsp|&nbsp</div><div class="playlist-description"> <%= @playlist_q.description %>&nbsp</div><div class="playlist-code">&nbsp|&nbspAccess Code: <%=@playlist_q.access_code%></div>
@@ -103,3 +111,6 @@
 
     </ol>
   </div>
+
+
+  <% end %>
