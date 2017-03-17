@@ -249,6 +249,8 @@ $(document).on("ready", function(){
      })
    })
 
+   var backButton = $('<button>').addClass('back-button').html('Back');
+
    $("body").delegate('.inner-album','click',function(event) {
      event.preventDefault();
 
@@ -261,7 +263,7 @@ $(document).on("ready", function(){
        dataType: 'json'
      }).done(function(data){
        console.log(data);
-       var backButton = $('<button>').addClass('back-button').html('Back');
+
       $('#search_results').html("");
       for (var i = 0; i < data['albums']["tracks"]['data'].length; i++){
         var button = $('<button>')
@@ -275,31 +277,6 @@ $(document).on("ready", function(){
      })
    })
 
-   $("body").delegate('.inner-album','click',function(event) {
-     event.preventDefault();
-
-     var album_id = parseInt($(this).attr('album-id'));
-
-     $.ajax({
-       url: '/playlists/' + playlistId + '/suggestedsongs/get_album',
-       method: 'get',
-       data: {album: album_id},
-       dataType: 'json'
-     }).done(function(data){
-       console.log(data);
-      $('#search_results').html("");
-      for (var i = 0; i < data['albums']["tracks"]['data'].length; i++){
-        var button = $('<button>')
-        var button = $(button).attr('class', 'suggest_song1');
-        var button = $(button).html('+');
-        var div = $('<div>').attr('class','song-listing').attr('song_id', data["albums"]["tracks"]["data"][i]['id']).attr('song_name', data["albums"]["tracks"]['data'][i]['title_short']).attr('artist', data["albums"]["tracks"]['data'][i]["artist"]["name"]);
-        $(div).html(data["albums"]["tracks"]['data'][i]['title_short']).append(' - ').append( data["albums"]["tracks"]['data'][i]["artist"]["name"]).append(button);
-        $('#search_results').append(div);
-      }
-
-     })
-   })
-
    $("body").delegate('.header', 'click', function(){
      if ($(this).html().trim() === 'Albums'){
       //  $('#search_results').replaceWith($('.all-albums').fadeIn('slow', function(){}));
@@ -307,11 +284,11 @@ $(document).on("ready", function(){
      }
      else if ($(this).html().trim() === 'Artists'){
       //  $('#search_results').replaceWith($('.all-albums').fadeIn('slow', function(){}));
-      $('#search_results').html($('.all-albums').html()).fadeIn('slow', function(){});
+      $('#search_results').html($('.all-artists').html()).fadeIn('slow', function(){});
      }
    })
 
-   $("body").delegate('.artist','click',function(event) {
+   $("body").delegate('.inner-artist','click',function(event) {
      event.preventDefault();
 
      console.log("this button was clicked!");
@@ -329,14 +306,14 @@ $(document).on("ready", function(){
 
        console.log(data);
 
-      $('#search_results_tracks').html("");
+      $('#search_results').html("");
       for (var i = 0; i < data['artists']['data'].length; i++){
         var button = $('<button>')
         var button = $(button).attr('class', 'suggest_song1');
         var button = $(button).html('+');
         var div = $('<div>').attr('class','song-listing').attr('song_id', data["artists"]["data"][i]['id']).attr('song_name', data["artists"]["data"][i]['title']).attr('artist', data["artists"]["data"][i]['artist']["name"]);
         $(div).html(data["artists"]["data"][i]['title']).append(' - ').append(data["artists"]["data"][i]['artist']["name"]).append(button);
-        $('#search_results_tracks').append(div);
+        $('#search_results').append(backButton).append(div);
       }
 
      })
