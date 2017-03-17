@@ -138,6 +138,7 @@ class SuggestedsongsController < ApplicationController
     @playlist_q = Playlist.find(params[:playlist_id])
     @suggested_song = SuggestedSong.find_by(playlist_id: @playlist_q.id, id: params[:id])
     @suggested_song.destroy
+    @votes = Vote.get_votes(params[:playlist_id])
     @songs = SuggestedSong.playlist_songs(params[:playlist_id])
     ActionCable.server.broadcast(:app, [@songs,'', @host_id, @votes])
 
