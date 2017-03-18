@@ -344,12 +344,6 @@ iframe {
   // padding-bottom: 5px;
 };
 
-.title {
-  font-family: 'Abril Fatface', cursive;
-  // float: left;
-  // margin-top: 7px;
-}
-
 .user_info {
   float: right;
   padding-right: 20px;
@@ -438,4 +432,8 @@ html{
     display: inline-block;
     margin-top: 4px;
     margin-bottom: 10px;
+}
+
+.guestlist-playlist {
+  float: right;
 }

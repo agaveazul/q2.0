@@ -80,10 +80,12 @@ $('document').ready(function(){
             data[3].forEach(function(vote) {
               if ((vote.suggestedsong_id === song.id) && (vote.user_id === userId)){
                 if (vote.status === "up"){
-                  $(buttonUp).addClass('darken-2');
+                  $(buttonUp).addClass('clicked darken-2');
+
                 }
                 else {
-                  $(buttonDown).addClass('darken-2');
+                  $(buttonDown).addClass('clicked darken-2');
+
                 }
                 }
               }
