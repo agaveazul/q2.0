@@ -11,7 +11,6 @@ $counter = 0
   def show
     SuggestedSong.where(playlist_id: params[:id], status: "playing").update_all(status: "que")
     @access = Authorization.find_by(playlist_id: params[:id], user_id: session[:user_id])
-    # binding.pry
     if @access
       @access = @access.status
     else
@@ -107,12 +106,8 @@ $counter = 0
   end
 
   def create
-    access_code = rand(999999)
-    while Playlist.where(access_code: access_code).count > 0
-      access_code = rand(999999)
-    end
     #in case the playlist_q doesnt save, in the render :new, there needs to be an @playlist
-
+    access_code = Playlist.create_access_code
     if playlist_params[:song_limit] == "None"
       song_limit = 1000
     else

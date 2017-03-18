@@ -6,21 +6,41 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.destroy_all
+Playlist.destroy_all
+SuggestedSong.destroy_all
 
-User.create(first_name: 'Rich', last_name: 'Strauss', email: 'ricardo@gmail.com', password: '1234')
-Playlist.create(name: 'the greatest')
-SuggestedSong.create(song_id: 30003271, playlist_id: 1, user_id: 1, name: 'wow')
-Authorization.create(playlist_id: 1, user_id: 1, status: "host")
-Vote.create(user_id: 1, suggestedsong_id: 1, status: 'up')
+10.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.free_email,
+    password: 'password',
+    password_confirmation: 'password',
+  )
+end
 
-User.create(first_name: 'Justin', last_name: 'C', email: 'justin@gmail.com', password: '1234')
-Playlist.create(name: 'the worst')
-SuggestedSong.create(song_id: 30003379, playlist_id: 1, user_id: 2, name: 'crap')
-Authorization.create(playlist_id: 1, user_id: 2, status: "guest")
-Vote.create(user_id: 2, suggestedsong_id: 2, status: 'down')
+50.times do
+  Playlist.create!(
+    name: Faker::App.name,
+    description: "Let's Party!",
+    theme: ['Pop', 'Alternative', 'Dance', 'Folk', 'Instrumental', 'Chill', 'Party', 'Blues', 'House/EDM', 'Rock', 'Rap', 'Hip-Hop', 'R&B', 'Electronic', 'Indie', 'Jazz', 'Reggae', 'Country', 'Other'].sample,
+    access_code: Playlist.create_access_code,
+    song_limit: 1000,
+    public: true,
+  )
+end
 
-User.create(first_name: 'Stephen', last_name: 'A', email: 'stephen@gmail.com', password: '1234')
-Playlist.create(name: 'mediocre')
-SuggestedSong.create(song_id: 30001971, playlist_id: 2, user_id: 3, name: 'mediocre')
-Authorization.create(playlist_id: 2, user_id: 3, status: "co-host")
-Vote.create(user_id: 3, suggestedsong_id: 3, status: 'up')
+500.times do
+  song = SuggestedSong.random_song
+  SuggestedSong.create!(
+    song_id: song[0],
+    playlist_id: rand(1..50),
+    user_id: rand(1..10),
+    name: song[2],
+    net_vote: rand(1..10),
+    artist: song[1],
+    user_name: Faker::Name.first_name,
+    status: 'que',
+  )
+end
