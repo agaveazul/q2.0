@@ -542,8 +542,6 @@ $(document).on("ready", function(){
     var replacement = $(this).parents('.contain').children('.heart').children('.netvote');
 
     setTimeout(function(){
-      console.log("Delay the upvote");
-      console.log(this);
       $.ajax({
         url:"/playlists/" + playlist_id + "/suggestedsongs/" + suggestedsong_id + "/votes",
         method: 'POST',
@@ -551,7 +549,7 @@ $(document).on("ready", function(){
           status: 'up',
         }
       });
-    }, 0);
+    }, 350);
 
   });
 
@@ -567,6 +565,6 @@ $(document).on("ready", function(){
           status: 'down'
         }
       });
-    }, 0);
+    }, 350);
   });
  });
