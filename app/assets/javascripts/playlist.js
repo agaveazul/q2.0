@@ -14,8 +14,9 @@ $(document).on("ready", function(){
       Materialize.toast("Vote withdrawn!", 3000);
       var netVote = currentVote - 1;
       $(this).parents('.buttons').siblings('.heart').children(".netvote").html(netVote);
+      $(this).addClass("btn lighten-2");
       $(this).removeClass("darken-2 btn-flat")
-      // $(this).addClass("blue lighten-2 btn")
+
     } else {
 
       if ($(this).siblings('.downvote').hasClass('darken-2')) {
@@ -42,8 +43,9 @@ $(document).on("ready", function(){
       Materialize.toast("Vote Withdrawn!", 3000);
       var netVote = currentVote + 1;
       $(this).parents('.buttons').siblings('.heart').children(".netvote").html(netVote);
+      $(this).addClass("btn lighten-2");
       $(this).removeClass("darken-2 btn-flat")
-      // $(this).addClass("red lighten-2 btn")
+
     } else {
 
       if ($(this).siblings('.upvote').hasClass('darken-2')) {
