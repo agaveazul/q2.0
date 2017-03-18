@@ -101,6 +101,7 @@ $(document).on("ready", function(){
        }).done(function(data){
          console.log(data);
          console.log("Added song");
+         Materialize.toast(randomPhrase(), 3000, randomColor());
 
          $(this).addClass('suggest_song1-active');
 
