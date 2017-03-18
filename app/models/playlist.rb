@@ -5,4 +5,14 @@ class Playlist < ApplicationRecord
 
   validates :name, :presence => true
   validates :theme, :presence => true
+
+  def self.create_access_code
+    access_code = rand(999999)
+    while Playlist.where(access_code: access_code).count > 0
+      access_code = rand(999999)
+    end
+    return access_code
+  end
+
+
 end
