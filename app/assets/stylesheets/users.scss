@@ -11,7 +11,7 @@
 }
 
 .hosted-playlist {
-  border-bottom: rgba(74, 199, 164,0.9) 1px solid;
+  border-bottom: rgba(74, 199, 164, 0.9) 1px solid;
   width: 90%;
 }
 
@@ -19,9 +19,13 @@
   color: white;
 }
 
+.guest-playlist a {
+  color: white;
+}
+
 #host-title {
-  background-color: rgba(74, 199, 164,0.9);
-  border: rgba(74, 199, 164,0.9) 1px solid;
+  background-color: rgba(74, 199, 164, 0.9);
+  border: rgba(74, 199, 164, 0.9) 1px solid;
   color: white;
   display: block;
   padding-left: 1rem;
