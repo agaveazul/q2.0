@@ -69,13 +69,15 @@ input[type="submit"]:hover {
   color: black;
 }
 
-#sign-up-button, #playlist-button, #join-button, #playlist-edit-button {
+#playlist-button, #join-button, #playlist-edit-button {
   color: cadetblue;
 }
 
-#login-button {
+#sign-up-button, #login-button {
   color: cadetblue;
+  // color: steelblue;
   width: 50%;
+  margin-top: 10px;
 }
 
 .login-session {
@@ -122,12 +124,15 @@ input[type="submit"]:hover {
 background-color: white;
 margin-bottom: 10px;
 padding: 40px;
+padding-top: 25px;
 width: 50%;
 }
 
 .title {
   color: white;
-  text-align: center;
+  margin: 3rem 0 0.5rem 0;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 80px;
 }
 
 .buttons-home, .buttons-user {
@@ -150,4 +155,8 @@ width: 50%;
 
 #email, #password {
   color: cadetblue;
+}
+
+btn.login-session.white:hover {
+  background-color: black !important;
 }

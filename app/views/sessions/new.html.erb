@@ -1,5 +1,5 @@
 <!-- <%= link_to 'Sign in with Deezer', "https://connect.deezer.com/oauth/auth.php?app_id=#{ENV["deezer_application_id"]}&redirect_uri=http://localhost:3000/auth/deezer/callback&perms=basic_access,email,manage_library" %> -->
-<h1 class="title">Login</h1>
+<h1 class="title">LOG IN</h1>
 
 
 
@@ -13,8 +13,8 @@
     <%= label_tag :password %><br />
     <%= password_field_tag :password %>
   </div>
+  <button class="btn login-session white" id="login-button" type="submit" name="action">LOG IN</button>
 </div>
 
-  <button class="btn login-session white" id="login-button" type="submit" name="action">LOGIN</button>
 
 <% end %>
