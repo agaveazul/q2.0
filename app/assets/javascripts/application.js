@@ -85,7 +85,6 @@ $(document).on("ready", function(){
     $('.downvote').css('z-index', 1);
   })
 
-  var notify = $("<div>").attr('class', 'notify').css('background-color', 'red').css('display', 'hidden').css('text-align', 'center');
 
   // User add a song to SuggeatedSong
   $("body").delegate('.suggest_song1', 'click', function (event){
@@ -102,14 +101,9 @@ $(document).on("ready", function(){
        }).done(function(data){
          console.log(data);
          console.log("Added song");
-         $('body').prepend((notify).css('display', 'block').html(data.message))
-         Materialize.toast(randomPhrase(), 3000, randomColor());
 
          $(this).addClass('suggest_song1-active');
 
-         setTimeout(function(){
-           $(notify).fadeOut('slow');
-         }, 2000);
        }).fail(function(data){
        })
   });
@@ -547,51 +541,32 @@ $(document).on("ready", function(){
     var suggestedsong_id = $(this).parents('.song-in-queue').data('suggested-song-id');
     var replacement = $(this).parents('.contain').children('.heart').children('.netvote');
 
-    $.ajax({
-      url:"/playlists/" + $(this).parents('.song-in-queue').data('playlist-id') + "/suggestedsongs/" + $(this).parents('.song-in-queue').data('suggested-song-id') + "/votes",
-      method: 'POST',
-      data: {
-        status: 'up',
-      }
-    }).done(function(data){
-
-      $('body').prepend((notify).css('display', 'block').html(data.message))
-      setTimeout(function(){
-        $(notify).fadeOut('slow');
-      }, 2000);
-
+    setTimeout(function(){
+      console.log("Delay the upvote");
+      console.log(this);
       $.ajax({
-        url:"/playlists/" + playlist_id + "/suggestedsongs/" + suggestedsong_id,
-        method: 'GET',
-      }).done(function(data){
-        $(replacement).html(data.net_vote);
+        url:"/playlists/" + playlist_id + "/suggestedsongs/" + suggestedsong_id + "/votes",
+        method: 'POST',
+        data: {
+          status: 'up',
+        }
       });
-    });
+    }, 0);
+
   });
 
   $("body").delegate('.downvote','click', function() {
     var playlist_id = $(this).parents('.song-in-queue').data('playlist-id');
     var suggestedsong_id = $(this).parents('.song-in-queue').data('suggested-song-id');
     var replacement = $(this).parents('.contain').children('.heart').children('.netvote')
-    $.ajax({
-      url:"/playlists/" + $(this).parents('.song-in-queue').data('playlist-id') + "/suggestedsongs/" + $(this).parents('.song-in-queue').data('suggested-song-id') + "/votes",
-      method: 'POST',
-      data: {
-        status: 'down'
-      }
-    }).done(function(data){
-
-      $('body').prepend((notify).css('display', 'block').html(data.message))
-      setTimeout(function(){
-        $(notify).fadeOut('slow');
-      }, 2000);
-
+    setTimeout(function(){
       $.ajax({
-        url:"/playlists/" + playlist_id + "/suggestedsongs/" + suggestedsong_id,
-        method: 'GET',
-      }).done(function(data){
-        $(replacement).html(data.net_vote);
-      })
-    });
+        url:"/playlists/" + playlist_id + "/suggestedsongs/" + suggestedsong_id + "/votes",
+        method: 'POST',
+        data: {
+          status: 'down'
+        }
+      });
+    }, 0);
   });
  });
