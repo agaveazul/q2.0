@@ -104,8 +104,8 @@ $('document').ready(function(){
         var votes = $(span).append(upButton).append(" ").append(downButton);
         var div_replace = $(divContainer).html(song.name + ' - ' + song.artist + ' | Added By: ' + song.user_name);
 
-        if (data[2] === userId) {
-          $(div_replace).append('<a rel="nofollow" data-method="delete" href="/playlists/' + playlist_id + '/suggestedsongs/' + song.id + '">Delete</a>').append(votes).append(heart);
+        if (data[2] === userId || song.user_id === userId) {
+          $(div_replace).append('<a rel="nofollow" data-method="delete" href="/playlists/' + playlist_id + '/suggestedsongs/' + song.id + '"> &nbsp Delete </a>').append(votes).append(heart);
         }
         else {
           $(div_replace).append(votes).append(heart);

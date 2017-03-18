@@ -1,3 +1,11 @@
+<% if @access == "Forbidden" %>
+
+<div class="pink lighten-2 blocked-message">
+  <h1>Sorry, you have been blocked from viewing this playlist.</h1>
+  <div><%= image_tag(("emoji.png"), :class => "emoji") %></div>
+</div>
+
+<% elsif @access == "Host" || @access == "Guest" %>
   <div>
   <div class="playlist-details">
   <div class="playlist-name"><%= @playlist_q.name %>&nbsp|&nbsp</div><div class="playlist-description"> <%= @playlist_q.description %>&nbsp</div><div class="playlist-code">&nbsp|&nbspAccess Code: <%=@playlist_q.access_code%></div>
@@ -87,7 +95,7 @@
           <span class="contain"></span>
         <% end %>
       <% end %>
-  <% if @access == "Host" %>
+  <% if (@access == "Host") or (User.find(song.user_id).id == session[:user_id]) %>
     <%= link_to "Delete", playlist_suggestedsong_path(@playlist_q, song), method: :delete%>
   <% end %>
   <span class="heart"><span class="netvote" id=<%=song.id%>><%= song.net_vote %></span>&nbsp<i class="fa fa-heart" style="font-size:12px"></i></span>
@@ -103,3 +111,6 @@
 
     </ol>
   </div>
+
+
+  <% end %>
