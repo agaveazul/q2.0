@@ -34,12 +34,12 @@ end
 500.times do
   song = SuggestedSong.random_song
   SuggestedSong.create!(
-    song_id: song[0],
+    song_id: rand(3135500..3136000),
     playlist_id: rand(1..50),
     user_id: rand(1..10),
-    name: song[2],
+    name: Faker::Name.title,
     net_vote: rand(1..10),
-    artist: song[1],
+    artist: Faker::RockBand.name,
     user_name: Faker::Name.first_name,
     status: 'que',
   )
