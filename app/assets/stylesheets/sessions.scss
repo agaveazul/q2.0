@@ -73,7 +73,7 @@ input[type="submit"]:hover {
   color: cadetblue;
 }
 
-#sign-up-button, #login-button, #playlist-button, #playlist-edit-button {
+#sign-up-button, #login-button, #playlist-button, #playlist-edit-button, #joinpage-button {
   color: white;
   margin-top: 10px;
   border-radius: 500px;
@@ -121,7 +121,7 @@ input[type="submit"]:hover {
 //   margin-bottom: 10px;
 // }
 
-.login-form, .sign-up-form, .party-form {
+.login-form, .sign-up-form, .party-form, .join-form {
 background-color: rgba(35, 35, 44, 0.39);
 margin-bottom: 10px;
 padding: 40px;
