@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  layout "signup"
 
   def deezer
      response = HTTParty.get("https://connect.deezer.com/oauth/access_token.php?app_id=#{ENV["deezer_application_id"]}&secret=#{ENV["deezer_secret_key"]}&code=#{params[:code]}&output=json")

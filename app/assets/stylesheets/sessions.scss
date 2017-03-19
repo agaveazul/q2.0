@@ -74,10 +74,13 @@ input[type="submit"]:hover {
 }
 
 #sign-up-button, #login-button {
-  color: cadetblue;
+  color: white;
   // color: steelblue;
-  width: 50%;
+  // width: 27%;
   margin-top: 10px;
+  border-radius: 500px;
+  border: 1px solid white; 
+  background-color: rgba(55, 55, 55, 0) !important;
 }
 
 .login-session {
@@ -121,10 +124,11 @@ input[type="submit"]:hover {
 }
 
 .login-form, .sign-up-form {
-background-color: white;
+background-color: rgba(35, 35, 44, 0.39);
 margin-bottom: 10px;
 padding: 40px;
 padding-top: 25px;
+padding-bottom: 25px;
 width: 50%;
 }
 
@@ -132,7 +136,8 @@ width: 50%;
   color: white;
   margin: 3rem 0 0.5rem 0;
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: 80px;
+  font-size: 65px;
+  padding-left: 40px;
 }
 
 .buttons-home, .buttons-user {
@@ -157,6 +162,14 @@ width: 50%;
   color: cadetblue;
 }
 
-btn.login-session.white:hover {
-  background-color: black !important;
+btn.login-session.white {
+  // background-color: black !important;
+}
+
+.input-field label {
+  color: white !important;
+}
+
+.input-field input {
+  border-bottom: 1px solid white !important;
 }
