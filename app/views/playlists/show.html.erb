@@ -88,11 +88,17 @@
 
       <% if @playlist_q.public %>
 
-          <span class="contain">
-            <span class="buttons"><button type="button" name="button" class="hidden upvote btn waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote btn waves-effect waves-light red"><i class="material-icons">thumb_down</i></button></span> &nbsp
+          <span class="contain hidden">
+            <span class="buttons"><button type="button" name="button" class="upvote btn waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote btn waves-effect waves-light red"><i class="material-icons">thumb_down</i></button></span> &nbsp
           </span>
 
-      <% else %>
+      <% elsif @playlist_q.public == false %>
+          <span class="contain hidden">
+            <span class="buttons"><button type="button" name="button" class="upvote btn waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote btn waves-effect waves-light red"><i class="material-icons">thumb_down</i></button></span> &nbsp
+          </span>
+      <% end %>
+
+      <% if @playlist_q.public == false %>
         <%if song.status == "que" %>
           <% if Vote.find_by(suggestedsong_id: song.id, user_id: session[:user_id]) %>
           <% @vote_now = Vote.find_by(suggestedsong_id: song.id, user_id: session[:user_id]).status %>
@@ -114,6 +120,7 @@
           <span class="contain"></span>
         <% end %>
       <% end %>
+      
   <% if (@access == "Host") or (User.find(song.user_id).id == session[:user_id]) %>
     <%= link_to "Delete", playlist_suggestedsong_path(@playlist_q, song), method: :delete%>
   <% end %>
@@ -125,7 +132,6 @@
   <div class="guest-list-container modal" id="modal1">
     <h3 class='guest-title'>Guest List</h3>
 
-    <!-- <span class="modal-action modal-close waves-effect waves-green btn-flat">X</span> -->
     <ol>
 
     </ol>

@@ -156,7 +156,7 @@ $counter = 0
     @playlist = Playlist.find(params[:id])
     if @playlist.public == false
       @playlist.update_attribute('public', true)
-    else
+    elsif @playlist.public == true
       @playlist.update_attribute('public', false)
     end
     ActionCable.server.broadcast(:app, [@playlist])
