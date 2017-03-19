@@ -55,7 +55,7 @@ $counter = 0
       SuggestedSong.find(params[:song_id]).update_attribute(:status, "played")
       @next_song_id = SuggestedSong.next_song_id(params[:id])
       @next_song_record = SuggestedSong.next_song_record(params[:id])
-      songs = SuggestedSong.playlist_songs(params[:song_id])
+      songs = SuggestedSong.playlist_songs(params[:id])
       status = []
       songs.each do |song|
         status << song.status
@@ -159,7 +159,30 @@ $counter = 0
     else
       @playlist.update_attribute('public', false)
     end
-    ActionCable.server.broadcast(:app, [@playlist])
+
+    @host_id = Authorization.where(playlist_id: params[:id], status: "Host")[0].user_id
+
+    @songs =  SuggestedSong.playlist_songs(@playlist.id)
+
+    # this is hacking
+    status = []
+    @songs.each do |song|
+      status << song if song.status == "playing"
+    end
+
+    if status.count > 1
+      song_to_adjust = status.last
+      SuggestedSong.find(song_to_adjust.id).update_attribute(status: "que")
+    end
+
+    @votes = Vote.get_votes(@playlist.id)
+
+    ActionCable.server.broadcast(:app, [@playlist, '', @host_id])
+
+    if @playlist.public == false
+      ActionCable.server.broadcast(:app, [@songs, "", @host_id, @votes])
+    end
+
   end
 
   def guestlist
