@@ -30,7 +30,7 @@
   border: rgba(74, 199, 164, 0.9) 1px solid;
   color: white;
   display: block;
-  padding-left: 1rem;
+  padding: 5px 10px;
 }
 
 #guest-title {
@@ -38,7 +38,7 @@
   border: rgba(232, 2, 103,0.9) 1px solid;
   color: white;
   display: block;
-  padding-left: 1rem;
+  padding: 5px 10px;
 }
 
 .hosted-playlists {
@@ -73,18 +73,18 @@ label {
   font-size: 15px;
 }
 
-#host-button, #join-button {
+.host-button, .join-button {
   background-color: rgba(0, 0, 0, 0.74);
 }
 
 .party-buttons {
-  margin-top: 200px;
+  margin-top: 83px;
 }
 
-.login-session {
-  color: cadetblue;
-  width: 100%;
-}
+// .login-session {
+//   color: cadetblue;
+//   width: 100%;
+// }
 
 .hidden {
   display: none;

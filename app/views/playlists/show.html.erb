@@ -80,8 +80,8 @@
     <% end %>
 
 
-    <%= song.name %> - <%= song.artist %>
-    <span class="added-by"> | Added By: <%= User.find(song.user_id).first_name %></span>
+    <%= song.name %> - <%= song.artist %><br/>
+    <span class="added-by">Added By: <%= User.find(song.user_id).first_name %></span>
 
 
       <% if (@access == "Host") %> <!-- if the user is host -->
@@ -109,7 +109,7 @@
               </span>
             <% end %>
 
-            <%= link_to "Delete", playlist_suggestedsong_path(@playlist_q, song), method: :delete%>
+            <%= link_to "Delete", playlist_suggestedsong_path(@playlist_q, song), method: :delete, class: 'delete-song' %>
 
           <% elsif song.status == "playing" %>
             <span class="contain">
@@ -121,7 +121,7 @@
               <span class="hidden buttons"><button type="button" name="button" class="hidden upvote btn waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote btn waves-effect waves-light red"><i class="material-icons">thumb_down</i></button></span> &nbsp
             </span>
 
-            <%= link_to "Delete", playlist_suggestedsong_path(@playlist_q, song), method: :delete%>
+            <%= link_to "Delete", playlist_suggestedsong_path(@playlist_q, song), method: :delete, class: 'delete-song' %>
 
           <% end %> <!-- end of if the playlist is public/private -->
         <% end %>  <!-- end of if the user is Host -->
