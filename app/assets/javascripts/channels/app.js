@@ -17,8 +17,8 @@ $('document').ready(function(){
       var playlist_id = parseInt(regExp.exec(window.location.pathname)[0]);
 
       if (data[0].id === playlist_id) {
-        console.log('we in private/public');
         if (data[0].public === true) {  //public
+          console.log('we are going public');
           $('#make-public').html('Public');
           $('#make-public').toggleClass('active');
           $('.que').find('.buttons').addClass('hidden');
@@ -30,7 +30,8 @@ $('document').ready(function(){
             $('.playing').children('a').addClass('hidden');
           }
         }
-        else if (data[0].public === false) {  //private
+        else if (data[0].public === false) { //private
+          console.log('we are going private');
           $('#make-public').html('Private');
           $('#make-public').toggleClass('active');
           $('.add-search-container').removeClass('hidden');
