@@ -34,7 +34,7 @@ $counter = 0
     @unplayedsongs = SuggestedSong.where(playlist_id: @playlist_q.id, status: "played").order(status: :desc, net_vote: :desc)
     @playedsongs = SuggestedSong.where(playlist_id: @playlist_q.id, status: "played")
 
-
+    render :layout => 'playlist'
   end
 
   def next_song
@@ -74,6 +74,7 @@ $counter = 0
   end
 
   def join
+    render :layout => "join"
   end
 
   def add_guest

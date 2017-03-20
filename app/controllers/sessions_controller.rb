@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
   layout "login"
 
   def new
-    user = User.find_by(email: params[:email])
   end
 
   def destroy

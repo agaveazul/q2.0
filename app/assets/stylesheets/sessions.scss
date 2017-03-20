@@ -5,6 +5,22 @@
   height: 100vh;
 }
 
+#login-body, #join-body {
+  position: relative;
+  height: 100vh;
+}
+
+#login-footer, #join-footer {
+  width: 100%;
+  text-align: center;
+  background-color: rgba(55, 55, 55, 0.75);
+  padding: 2px 0;
+  color: white;
+  position: absolute;
+  /* height: 100vh; */
+  bottom: 0;
+}
+
 input {
   // background-color: white;
   color: white;
@@ -96,7 +112,7 @@ input[type="submit"]:hover {
 .q-instructions {
     position: relative;
     top: 0px;
-    background-color: rgba(55, 55, 55, 0.75);
+    background-color: rgba(18, 168, 154, 0.9);
     padding: 45px 60px;
     color: white;
 }
