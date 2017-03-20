@@ -144,6 +144,8 @@ $counter = 0
       album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1484712548363-bad7b2ff3878%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3D568508f274d090aeb841bc0b5eadecdd'
     when 'Dance'
       album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1482575832494-771f74bf6857%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3D4d6bff93604128f856a49ab6d6b94a0e'
+    when 'Party'
+      album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1482575832494-771f74bf6857%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3D4d6bff93604128f856a49ab6d6b94a0e'
     when 'Pop'
       album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1482575832494-771f74bf6857%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3D4d6bff93604128f856a49ab6d6b94a0e'
     when 'Other'
