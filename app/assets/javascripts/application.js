@@ -99,6 +99,8 @@ $(document).on("ready", function(){
            artist: $(this).attr('artist')
          }
        }).done(function(data){
+         console.log('here comes the data');
+         console.log(data);
          if (data.status === true){
            Materialize.toast(randomPhrase(), 3000, randomColor());
          }
