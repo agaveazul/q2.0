@@ -112,7 +112,9 @@ $('document').ready(function(){
 
 
         var votes = $(span).append(upButton).append(" ").append(downButton);
-        var div_replace = $(divContainer).html(song.name + ' - ' + song.artist + ' | Added By: ' + song.user_name);
+        var divSong = $(divContainer).html(song.name + ' - ' + song.artist);
+        var spanAdd = $('<span>').html("<br/>" + ' Added By: ' + song.user_name).addClass('added-by');
+        var div_replace = $(divSong).append(spanAdd)
 
         if ((data[2] === userId) && (song.status != "playing")) {
           $(div_replace).append('<a rel="nofollow" data-method="delete" href="/playlists/' + playlist_id + '/suggestedsongs/' + song.id + '"> &nbsp Delete </a>').append(votes).append(heart);

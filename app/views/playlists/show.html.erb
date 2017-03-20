@@ -80,8 +80,8 @@
     <% end %>
 
 
-    <%= song.name %> - <%= song.artist %>
-    <span class="added-by"> | Added By: <%= User.find(song.user_id).first_name %></span>
+    <%= song.name %> - <%= song.artist %><br/>
+    <span class="added-by">Added By: <%= User.find(song.user_id).first_name %></span>
 
 
       <% if (@access == "Host") %> <!-- if the user is host -->

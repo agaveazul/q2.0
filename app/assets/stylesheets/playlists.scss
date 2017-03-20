@@ -140,7 +140,7 @@ img.track-img {
 }
 
 .playing {
-  background-color: red;
+  background-color: #0ab091;
 }
 
 .intro-bio {
@@ -328,8 +328,8 @@ iframe {
   border-bottom: 1px solid rgba(232, 232, 236, 0.4);
   // border-left: 1px solid #cccccc;
   // border-right: 1px solid #cccccc;
-  padding: 5px 1rem;
-  line-height: 2.5;
+  padding: 10px 1rem;
+  line-height: 1.5;
   // background: linear-gradient(to left, #bfbfc0, rgb(248, 248, 249));
   color: $player-white;
   overflow: hidden;
@@ -348,6 +348,10 @@ iframe {
   // padding-bottom: 5px;
 };
 
+.added-by {
+  font-size: smaller;
+}
+
 .user_info {
   float: right;
   padding-right: 20px;
@@ -357,11 +361,13 @@ iframe {
 .buttons {
     position: absolute;
     right: 60px;
+    bottom: 13px;
 }
 
 .heart {
     position: absolute;
     right: 20px;
+    bottom: 20px;
 }
 
 .nav_bar {
