@@ -15,8 +15,7 @@
 <section class="public_playlists">
 <% @public_playlists.each do |playlist| %>
 <div class="public_playlist">
-  <%= playlist.name %>
-  <%= playlist.theme %>
+  <%= link_to playlist.name, view_public_playlist_path(playlist.id) %>
 </div>
 <% end %>
 </section>

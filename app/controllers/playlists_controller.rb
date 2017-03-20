@@ -33,7 +33,6 @@ $counter = 0
 
     @unplayedsongs = SuggestedSong.where(playlist_id: @playlist_q.id, status: "played").order(status: :desc, net_vote: :desc)
     @playedsongs = SuggestedSong.where(playlist_id: @playlist_q.id, status: "played")
-
     render :layout => 'playlist'
   end
 
@@ -52,18 +51,24 @@ $counter = 0
 
 
   def update_song
-      SuggestedSong.find(params[:song_id]).update_attribute(:status, "played")
-      @next_song_id = SuggestedSong.next_song_id(params[:id])
-      @next_song_record = SuggestedSong.next_song_record(params[:id])
-      songs = SuggestedSong.playlist_songs(params[:id])
-      status = []
-      songs.each do |song|
-        status << song.status
+    SuggestedSong.find(params[:song_id]).update_attribute(:status, "played")
+    songs = SuggestedSong.playlist_songs(params[:id])
+    dup_songs = []
+    songs.each do |song|
+      dup_songs << song if song.status == "playing"
+    end
+
+    if dup_songs.count > 0 #when no songs are in playing status
+      dup_songs.each do |song|
+      SuggestedSong.find(song.id).update_attribute(:status, "que")
       end
-      if !status.include?('playing')
-        SuggestedSong.find(@next_song_record).update_attribute(:status, "playing")
-        render json: {song_id: @next_song_id, song_record: @next_song_record}
-      end
+    end
+
+    @next_song_id = SuggestedSong.next_song_id(params[:id])
+    @next_song_record = SuggestedSong.next_song_record(params[:id])
+
+    SuggestedSong.find(@next_song_record).update_attribute(:status, "playing")
+    render json: {song_id: @next_song_id, song_record: @next_song_record}
   end
 
   def playlist_broadcast
@@ -213,16 +218,12 @@ $counter = 0
       status << song if song.status == "playing"
     end
 
-
     if status.count > 1
       song_to_adjust = status.last
       SuggestedSong.find(song_to_adjust.id).update_attribute(:status, "que")
     end
 
     @votes = Vote.get_votes(@playlist.id)
-
-
-
     ActionCable.server.broadcast(:app, [@playlist, '', @host_id])
 
     if @playlist.public == false

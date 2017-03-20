@@ -33,6 +33,11 @@ class SessionsController < ApplicationController
   end
 
   def view
+    @playlist_q = Playlist.find(params[:id])
+    @songs = SuggestedSong.playlist_songs(@playlist_q.id)
+    @songs.each do |song|
+      song.update_attribute(:status, "que")
+    end
   end
 
 end
