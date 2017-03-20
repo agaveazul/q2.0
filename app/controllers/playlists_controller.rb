@@ -162,7 +162,7 @@ $counter = 0
 
     @host_id = Authorization.where(playlist_id: params[:id], status: "Host")[0].user_id
 
-    @songs =  SuggestedSong.playlist_songs(@playlist.id)
+    @songs = SuggestedSong.playlist_songs(@playlist.id)
 
     # this is hacking
     status = []
@@ -170,12 +170,15 @@ $counter = 0
       status << song if song.status == "playing"
     end
 
+
     if status.count > 1
       song_to_adjust = status.last
-      SuggestedSong.find(song_to_adjust.id).update_attribute(status: "que")
+      SuggestedSong.find(song_to_adjust.id).update_attribute(:status, "que")
     end
 
     @votes = Vote.get_votes(@playlist.id)
+
+
 
     ActionCable.server.broadcast(:app, [@playlist, '', @host_id])
 
