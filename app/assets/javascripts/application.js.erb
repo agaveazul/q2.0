@@ -154,7 +154,7 @@ $(document).on("ready", function(){
 
 
 
-      $('#search_results').html('')
+      $('#search_results').html('');
 
       if (data['artists']['data'].length > 0) {
         $('#search_results').append(artistsContainer);
@@ -219,7 +219,7 @@ $(document).on("ready", function(){
           $(contain).append((div).append(image_container).append(album_title));
 
         }
-        $('.all-albums').html('').append(contain);
+        $('.all-albums').html('').append($('<a>').addClass('back-button').addClass('waves-effect waves-light btn light-blue lighten-2').html('BACK TO SEARCH RESULTS')).append(contain);
 
 
       var contain = $('<div>').addClass('contain');
@@ -255,7 +255,7 @@ $(document).on("ready", function(){
           $(contain).append((div).append(image_container).append(artist_title));
 
         }
-        $('.all-artists').html('').append(contain);
+        $('.all-artists').html('').append($('<a>').addClass('back-button').addClass('waves-effect waves-light btn light-blue lighten-2').html('BACK TO SEARCH RESULTS')).append(contain);
     })
    })
 
@@ -279,22 +279,22 @@ $(document).on("ready", function(){
 
    for (var i = 0; i < data["artists"]['data'].length; i++){
 
-   var icon = $('<i>').attr('class','fa fa-plus-circle').attr('aria-hidden', 'true')
-   var div = $('<div>').attr('class','song-listing suggest_song1').attr('song_id', data["artists"]['data'][i]['id']).attr('song_name', data["artists"]['data'][i]['title']).attr('artist', data["artists"]['data'][i]["artist"]["name"]);
+     var icon = $('<i>').attr('class','fa fa-plus-circle').attr('aria-hidden', 'true')
+     var div = $('<div>').attr('class','song-listing suggest_song1').attr('song_id', data["artists"]['data'][i]['id']).attr('song_name', data["artists"]['data'][i]['title']).attr('artist', data["artists"]['data'][i]["artist"]["name"]);
 
-   var image_container = $('<div>').addClass('track-img-container');
-   var img = $('<img>').attr('src',data['artists']['data'][i]['album']['cover_medium']).addClass('track-img');
-   image_container =$(image_container).append(img).append(icon);
+     var image_container = $('<div>').addClass('track-img-container');
+     var img = $('<img>').attr('src',data['artists']['data'][i]['album']['cover_medium']).addClass('track-img');
+     image_container =$(image_container).append(img).append(icon);
 
-   $(div).append(image_container);
+     $(div).append(image_container);
 
-   var trackInfo = $('<div>').attr('class','track-info')
-   var trackTitle = $('<div>').html(data["artists"]['data'][i]["title"])
-   var trackArtist = $('<div>').attr('class', 'trackArtist').html(data["artists"]['data'][i]["artist"]["name"]);
+     var trackInfo = $('<div>').attr('class','track-info')
+     var trackTitle = $('<div>').html(data["artists"]['data'][i]["title"])
+     var trackArtist = $('<div>').attr('class', 'trackArtist').html(data["artists"]['data'][i]["artist"]["name"]);
 
-   $(trackInfo).append(trackTitle).append(trackArtist);
-   $(div).append(trackInfo);
-   $('#search_results_tracks').append(backButton).append(div);
+     $(trackInfo).append(trackTitle).append(trackArtist);
+     $(div).append(trackInfo);
+     $('#search_results_tracks').append(div);
    }
    })
   })
@@ -314,7 +314,7 @@ $(document).on("ready", function(){
        console.log(data);
 
 
-       //displays tracks with album cover when clicking on album from initial search results page
+       //initial search results page
        $('#search_results_tracks').html("");
        for (var i = 0; i < data['albums']['tracks']['data'].length; i++){
 
@@ -338,8 +338,7 @@ $(document).on("ready", function(){
 
      })
    })
-
-   var backButton = $('<button>').addClass('back-button').html('Back');
+   var backButton = $('<a>').addClass('back-button').addClass('waves-effect waves-light btn light-blue lighten-2').html('BACK TO SEARCH RESULTS');
 
    $("body").delegate('.inner-album','click',function(event) {
      event.preventDefault();
@@ -352,8 +351,9 @@ $(document).on("ready", function(){
        data: {album: album_id},
        dataType: 'json'
      }).done(function(data){
+       console.log("Album tracks");
        console.log(data);
-      $('#search_results').html("");
+      $('#search_results').html("").append(backButton);
 
 
       //displays tracks with album cover when searching for a specific album
@@ -374,7 +374,7 @@ $(document).on("ready", function(){
 
         $(trackInfo).append(trackTitle).append(trackArtist);
         $(div).append(trackInfo);
-        $('#search_results').append(backButton).append(div);
+        $('#search_results').append(div);
       }
      })
    })
@@ -407,7 +407,7 @@ $(document).on("ready", function(){
 
 
        //displaying tracks for one album
-       $('#search_results').html("");
+       $('#search_results').html("").append($('<a>').addClass('back-button').addClass('waves-effect waves-light btn light-blue lighten-2').html('BACK TO SEARCH RESULTS'));
        for (var i = 0; i < data['artists']['data'].length; i++){
 
          var icon = $('<i>').attr('class','fa fa-plus-circle').attr('aria-hidden', 'true')
@@ -425,9 +425,10 @@ $(document).on("ready", function(){
 
          $(trackInfo).append(trackTitle).append(trackArtist);
          $(div).append(trackInfo);
-         $('#search_results').append(backButton).append(div);
+         $('#search_results').append(div);
        }
 
+       $('#search_results').append($('<a>').addClass('back-button').addClass('waves-effect waves-light btn light-blue lighten-2').html('BACK TO SEARCH RESULTS'));
      })
    })
 

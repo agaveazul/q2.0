@@ -12,14 +12,15 @@
   <div class="playlist-name"><%= @playlist_q.name %>&nbsp|&nbsp</div><div class="playlist-description"> <%= @playlist_q.description %>&nbsp</div>
   <div class="playlist-code">&nbsp|&nbspAccess Code: <%=@playlist_q.access_code%></div> <% if @access == "Host" || @access == "Guest" %>
   <% if @access == "Host" %>
-  <span class="guestlist-playlist"><button> <%= link_to "Guestlist", '#modal1' %> </button></span>
-  <button id="make-public" type="submit" name="action">
+
+  <span class="guestlist-playlist"><a class="waves-effect waves-light btn cyan darken-4" href='#modal1'>Guest List</a></span>
+  <span><a id="make-public" class="waves-effect waves-light btn teal accent-4">
     <%if @playlist_q.public %>
-    <%= "Public" %>
+    <%= "Locked" %>
     <% else %>
-    <%= "Private" %>
+    <%= "All Access" %>
     <% end %>
-  </button>
+  </a></span>
 </div>
  <% end %>
 
@@ -43,18 +44,21 @@
     <%= render :partial => "nextsong.js" %>
   </script>
 
-<div>
-  <% if @playlist_q.public %>
-    <button class='hidden add-search-container'> Add a song </button>
+  <% if (@playlist_q.public) && (@access == "Guest" || @access == "Viewer") %>
+  <div class="hidden add-search-container">
+    <a class=" waves-effect waves-light btn pink darken-1">Add a song</a>
   <% else %>
-    <button class='add-search-container'> Add a song </button>
+  <div class="add-search-container">
+    <a class="waves-effect waves-light btn pink darken-1">Add a song</a>
   <% end %>
 </div>
 
   <div class="search-container hidden">
     <section class="search">
 
-      <button class="back">Back to playlist</button>
+      <a class="hidden back waves-effect waves-light btn pink darken-1">Back to playlist</a>
+
+      <!-- <button class="back">Back to playlist</button> -->
       <%= form_tag  playlist_suggestedsongs_path(params[:id]), method: "get" do |f| %>
         <div class="field">
           <%= text_field_tag :search, nil, placeholder:'Search Music' %>
@@ -173,14 +177,14 @@
     </div> <!-- ends the song div -->
 
     <% end %> <!-- ends the song loop -->
+</div>
 
-    <div class="guest-list-container modal" id="modal1">
-      <h3 class='guest-title'>Guest List</h3>
+<div class="guest-list-container modal" id="modal1">
+  <h3 class='guest-title'>Guest List</h3>
 
-      <!-- <span class="modal-action modal-close waves-effect waves-green btn-flat">X</span> -->
-      <ol>
-      </ol>
-    </div>
-
+  <!-- <span class="modal-action modal-close waves-effect waves-green btn-flat">X</span> -->
+  <ol>
+  </ol>
+</div>
     <% end %>
   <% end %>
