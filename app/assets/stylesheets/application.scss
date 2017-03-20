@@ -21,6 +21,16 @@
    box-sizing: border-box;
  }
 
+ footer {
+  width: 100%;
+  text-align: center;
+  background-color: rgba(55, 55, 55, 0.75);
+  padding: 3px 0;
+  // bottom: -402px;
+  // position: absolute;
+  color: white;
+}
+
 .alternative-background {
    background: url("cottage.jpg") center center fixed no-repeat;
    background-size: cover;

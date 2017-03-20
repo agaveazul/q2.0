@@ -5,6 +5,22 @@
   height: 100vh;
 }
 
+#login-body, #join-body {
+  position: relative;
+  height: 100vh;
+}
+
+#login-footer, #join-footer {
+  width: 100%;
+  text-align: center;
+  background-color: rgba(55, 55, 55, 0.75);
+  padding: 2px 0;
+  color: white;
+  position: absolute;
+  /* height: 100vh; */
+  bottom: 0;
+}
+
 input {
   // background-color: white;
   color: white;
@@ -69,17 +85,15 @@ input[type="submit"]:hover {
   color: black;
 }
 
-#playlist-button, #join-button, #playlist-edit-button {
+#playlist-button, #join-button {
   color: cadetblue;
 }
 
-#sign-up-button, #login-button {
+#sign-up-button, #login-button, #playlist-button, #playlist-edit-button, #joinpage-button {
   color: white;
-  // color: steelblue;
-  // width: 27%;
   margin-top: 10px;
   border-radius: 500px;
-  border: 1px solid white; 
+  border: 1px solid white;
   background-color: rgba(55, 55, 55, 0) !important;
 }
 
@@ -98,7 +112,7 @@ input[type="submit"]:hover {
 .q-instructions {
     position: relative;
     top: 0px;
-    background-color: rgba(55, 55, 55, 0.75);
+    background-color: rgba(18, 168, 154, 0.9);
     padding: 45px 60px;
     color: white;
 }
@@ -117,13 +131,13 @@ input[type="submit"]:hover {
   text-align: center;
 }
 
-.party-form {
-  background-color: rgba(35, 35, 44, 0.43);
-  // margin-top: 90px;
-  margin-bottom: 10px;
-}
+// .party-form {
+//   background-color: rgba(35, 35, 44, 0.43);
+//   // margin-top: 90px;
+//   margin-bottom: 10px;
+// }
 
-.login-form, .sign-up-form {
+.login-form, .sign-up-form, .party-form, .join-form {
 background-color: rgba(35, 35, 44, 0.39);
 margin-bottom: 10px;
 padding: 40px;
@@ -157,11 +171,6 @@ width: 50%;
   }
 }
 
-
-#email, #password {
-  color: cadetblue;
-}
-
 btn.login-session.white {
   // background-color: black !important;
 }
@@ -172,4 +181,12 @@ btn.login-session.white {
 
 .input-field input {
   border-bottom: 1px solid white !important;
+}
+
+.field label {
+  color: white !important;
+}
+
+.field input {
+  color: white !important;
 }

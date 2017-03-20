@@ -4,55 +4,60 @@
     <title>Q</title>
     <%= csrf_meta_tags %>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=News+Cycle:700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700" rel="stylesheet">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class='alternative-background'>
+  <body class="main-body">
+
 
 
     <nav class='nav_bar'>
-      <%= link_to root_path do %>
-        <%= image_tag("Q.png") %>
-      <% end %>
+        <%= link_to root_path do %>
+          <%= image_tag("Q.png") %>
+        <% end %>
       <p class="user_info">
         <% if current_user %>
+
         <%= link_to current_user.first_name, user_path(session[:user_id]) %><span class="nav-pipe"> | <span class="delete_user_id hidden"><%= session[:user_id] %></span></span>
+
         <%= link_to "Log out", session_path(session[:user_id]), method: :delete %>
         <% else %>
         <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
         <% end %>
       </p>
     </nav>
-    <div class="viewable-screen">
+
+    <!-- error messages for any flash notices or alerts anywhere -->
+        <% if flash.now[:alert] && flash.now[:alert].class == Array %>
+        <ul>
+          <% flash.now[:alert].each do |error| %>
+            <li id="alert"><%= error %></li>
+          <% end %>
+        </ul>
+        <% elsif flash.now[:alert] %>
+        <p id="alert"><%= flash.now[:alert] %></p>
+        <% end %>
+
+        <% if flash.now[:notice] && flash.now[:notice].class == Array %>
+        <ul>
+        <% flash.now[:notice].each do |notice| %>
+            <li id="notice"><%= notice%></li>
+          <% end %>
+        </ul>
+        <% elsif flash.now[:notice] %>
+        <p id="notice"><%= flash.now[:notice] %></p>
+        <% end %>
 
       <div class="container">
 
-        <div class="intro">
-          <p class="intro-bio"><img class="queue" src="/assets/Q-250f07d1bf9986fa1909967c7cf916c78ac32b8f27c0093a8abf373de2e6b8ad.png" alt=""></p>
-        </div>
-
-    <% unless current_user %>
-        <div class="buttons-home">
-          <div><%= link_to 'Log in', new_session_path, class: 'btn logins' %></div>
-          <div><%= link_to "Sign Up", new_user_path, class: 'btn logins' %></div>
-        </div>
-    <% end %>
-
-      </div>
-    </div>
     <%= yield %>
 
+    </div>
   </body>
 
-  <footer>
-  <p class="footer">© 2017 Q , Justin C. Stephen H. Richard S. Akshit S. Theresa S.</p>
-</footer>
 </html>

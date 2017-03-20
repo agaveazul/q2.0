@@ -34,7 +34,7 @@ $counter = 0
     @unplayedsongs = SuggestedSong.where(playlist_id: @playlist_q.id, status: "played").order(status: :desc, net_vote: :desc)
     @playedsongs = SuggestedSong.where(playlist_id: @playlist_q.id, status: "played")
 
-
+    render :layout => 'playlist'
   end
 
   def next_song
@@ -74,6 +74,7 @@ $counter = 0
   end
 
   def join
+    render :layout => "join"
   end
 
   def add_guest
@@ -95,7 +96,7 @@ $counter = 0
   def new
     @playlist_q = Playlist.new
     @themes = ['Pop', 'Alternative', 'Dance', 'Folk', 'Instrumental', 'Chill', 'Party', 'Blues', 'House/EDM', 'Rock', 'Rap', 'Hip-Hop', 'R&B', 'Electronic', 'Indie', 'Jazz', 'Reggae', 'Country', 'Other'].sort
-    @song_limits = ['None', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    @song_limits = ['None', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
   end
 
   def destroy

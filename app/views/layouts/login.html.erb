@@ -12,7 +12,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="login-background">
+  <body class="login-background" id="login-body">
 
 
 
@@ -23,7 +23,7 @@
       <p class="user_info">
         <% if current_user %>
 
-        Hello <%= link_to current_user.first_name, user_path(session[:user_id]) %><span class="delete_user_id hidden"><%= session[:user_id] %></span>
+        <%= link_to current_user.first_name, user_path(session[:user_id]) %><span class="nav-pipe"> | <span class="delete_user_id hidden"><%= session[:user_id] %></span></span>
 
         <%= link_to "Log out", session_path(session[:user_id]), method: :delete %>
         <% else %>
@@ -59,4 +59,7 @@
 
     </div>
   </body>
+  <footer id="login-footer">
+  <p class="footer">© 2017 Q , Justin C. Stephen H. Richard S. Akshit S. Theresa S.</p>
+</footer>
 </html>
