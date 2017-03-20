@@ -105,7 +105,7 @@ $(document).on("ready", function(){
            Materialize.toast(randomPhrase(), 3000, randomColor());
          }
          else if (data.status === false){
-           Materialize.toast("Your song has already been Q'd up", 3000, randomColor());
+           Materialize.toast("Your song has already been Q'd up", 3000, 'red darken-2');
          }
 
          $(this).addClass('suggest_song1-active');
