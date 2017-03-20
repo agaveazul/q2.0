@@ -1,6 +1,6 @@
-<h1 class="title" id="playlist-title"> CREATE A<br/> PLAYLIST</h1>
 
 <div class="party-form">
+  <h1 class="title" id="playlist-title"> CREATE A PLAYLIST</h1>
 
 
   <%= form_for @playlist_q do |f| %>
@@ -18,7 +18,7 @@
     </div>
     <div class="field">
       <%= f.label :guest_song_limit %>
-      <%= f.text_field :song_limit, placeholder: "Please type in a number or 'none' for no limit" %> <br />
+      <%= f.select(:song_limit, @song_limits, {}, { :class => 'browser-default dropdown' }) %> <br />
     </div>
 
 
