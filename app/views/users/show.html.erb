@@ -9,7 +9,7 @@
     <div class="playlist-block">
       <div class='hosted-playlist' playlist-id="<%=playlist.id%>">
         <img src='<%= playlist.album_art %>' class="playlist_image">
-        <li class="hosteduser-playlist"><%= link_to playlist_path(playlist) do %> <span> <%= playlist.name %> <br> <%= playlist.theme %> <br> Access Code: <%= playlist.access_code %> </span><% end %> </li>
+        <li class="hosteduser-playlist"><%= link_to playlist_path(playlist) do %> <span> <span class="playlist-title"><%= playlist.name %> </span> <br> <span class="theme-and-code"><%= playlist.theme %> <br> Code: <%= playlist.access_code %> </span></span><% end %> </li>
       </div>
     <span class='edit-delete'><span class="guestlist"><%= link_to "Guestlist", '#modal1' %> |</span> <span class="edits"> <%= link_to "Edit", edit_playlist_path(playlist) %> | <%= link_to "Delete", playlist_path(playlist), method: :delete %> </span></span>
     </div>
@@ -25,7 +25,7 @@
     <div class="playlist-block">
       <div class="guest-playlist">
         <img src='<%= playlist.album_art %>' class="playlist_image">
-        <li class="guestuser-playlist"><%= link_to playlist_path(playlist) do %> <span> <%= playlist.name %> <br> <%= playlist.theme %> </span> <% end %> </li>
+        <li class="guestuser-playlist"><%= link_to playlist_path(playlist) do %> <span> <span class="playlist-title"> <%= playlist.name %> </span> <br> <%= playlist.theme %> </span> <% end %> </li>
       </div>
     </div>
     <% end %>
