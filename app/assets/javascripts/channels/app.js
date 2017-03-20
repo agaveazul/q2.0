@@ -117,10 +117,10 @@ $('document').ready(function(){
         var div_replace = $(divSong).append(spanAdd)
 
         if ((data[2] === userId) && (song.status != "playing")) {
-          $(div_replace).append('<a rel="nofollow" data-method="delete" href="/playlists/' + playlist_id + '/suggestedsongs/' + song.id + '"> &nbsp Delete </a>').append(votes).append(heart);
+          $(div_replace).append('<a rel="nofollow" class="delete-song" data-method="delete" href="/playlists/' + playlist_id + '/suggestedsongs/' + song.id + '"> &nbsp Delete </a>').append(votes).append(heart);
         }
         else if ((song.user_id === userId) && song.status === "que") {
-          $(div_replace).append('<a rel="nofollow" data-method="delete" href="/playlists/' + playlist_id + '/suggestedsongs/' + song.id + '"> &nbsp Delete </a>').append(votes).append(heart);
+          $(div_replace).append('<a rel="nofollow" class="delete-song" data-method="delete" href="/playlists/' + playlist_id + '/suggestedsongs/' + song.id + '"> &nbsp Delete </a>').append(votes).append(heart);
         }
         else {
           $(div_replace).append(votes).append(heart);
