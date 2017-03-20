@@ -174,7 +174,7 @@ $counter = 0
         user_id: session[:user_id],
         status: "Host")
     else
-       flash.now[:alert] = @playlist_q.errors.full_messages
+      flash.now[:alert] = @playlist_q.errors.full_messages
       render :new
     end
 
