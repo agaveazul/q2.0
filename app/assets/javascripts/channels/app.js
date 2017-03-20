@@ -18,7 +18,7 @@ $('document').ready(function(){
 
       if (data[0].id === playlist_id) {
         if (data[0].public) {  //public
-          $('#make-public').html('Public');
+          $('#make-public').html('Locked');
           $('#make-public').toggleClass('active');
           $('.que').find('.buttons').addClass('hidden');
           if (userId != data[2])  { //if guest or viewer
@@ -31,7 +31,7 @@ $('document').ready(function(){
         }
         else if (data[0].public === false) { //private
           console.log('we are going private');
-          $('#make-public').html('Private');
+          $('#make-public').html('All Access');
           $('#make-public').toggleClass('active');
           $('.add-search-container').removeClass('hidden');
         }
@@ -66,6 +66,7 @@ $('document').ready(function(){
 
 
         $('.song-list').html('');
+
         data[0].forEach(function(song) {
           if (song.status === "played") {
             var divContainer = $('<div>').attr('class', 'song-in-queue played').attr('data-playlist-id', playlist_id).attr('data-suggested-song-id', song.id);
@@ -112,6 +113,7 @@ $('document').ready(function(){
         var div_replace = $(divSong).append(spanAdd)
 
         if (song.playlist_id > 4) {
+
           if ((data[2] === userId) && (song.status != "playing")) {
             $(div_replace).append('<a rel="nofollow" class="delete-song" data-method="delete" href="/playlists/' + playlist_id + '/suggestedsongs/' + song.id + '"> &nbsp Delete </a>')
           }
@@ -119,11 +121,15 @@ $('document').ready(function(){
             $(div_replace).append('<a rel="nofollow" class="delete-song" data-method="delete" href="/playlists/' + playlist_id + '/suggestedsongs/' + song.id + '"> &nbsp Delete </a>')
           }
 
-        $(div_replace).append(votes);
-        }
+          if (data[4].public == false) {
+            console.log('did we get here?');
+          $(div_replace).append(votes);
+          }
 
+        }
         $(div_replace).append(heart);
         $(div_replace).appendTo('.song-list');
+
         })
       }
       }

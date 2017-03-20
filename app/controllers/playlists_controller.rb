@@ -75,7 +75,8 @@ $counter = 0
       @songs =  SuggestedSong.playlist_songs(params[:id])
       @votes = Vote.get_votes(params[:id])
       @host_id = Authorization.where(playlist_id: params[:id], status: "Host")[0].user_id
-      ActionCable.server.broadcast(:app, [@songs, '', @host_id, @votes])
+      @playlist = Playlist.find(params[:id])
+      ActionCable.server.broadcast(:app, [@songs, '', @host_id, @votes, @playlist])
   end
 
   def join
@@ -227,7 +228,7 @@ $counter = 0
     ActionCable.server.broadcast(:app, [@playlist, '', @host_id])
 
     if @playlist.public == false
-      ActionCable.server.broadcast(:app, [@songs, "", @host_id, @votes])
+      ActionCable.server.broadcast(:app, [@songs, "", @host_id, @votes, @playlist])
     end
 
   end
