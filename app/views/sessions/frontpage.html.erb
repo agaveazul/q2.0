@@ -1,13 +1,13 @@
 
 <section class="q-description">
     <h1 class="front">What is Q?</h1>
-    <h5>
+    <h5 class="hideme">
       Q is a crowdsourcing playlist app that gives listeners a voice in what they want to hear, when they want to hear it.  The app introduces an interactive and collaborative platform that allows users to queue up and vote on songs that they want to hear, an experience undoubtedly missing from today’s music streaming industry.
     </h5>
 </section>
 <section class="q-instructions">
-    <h1 class="front">Here's how it works</h1>
-    <div class="q-inst-cont">
+    <h1 class="front hideme">Here's how it works</h1>
+    <div class="q-inst-cont hideme">
       <div class="q-steps">
         <h4><i class="material-icons front-pg-symbol">playlist_add</i>&nbspCreate</h4>
         <p class="front-desc">Hosting a big event? Inviting a few of your friends over? Creating a playlist on Q is the perfect companion for any occasion.</p>
@@ -28,10 +28,10 @@
 </section>
 
 <section class="public_playlists">
-  <h1 class="front">Public Playlists</h1>
+  <h1 class="front hideme">Public Playlists</h1>
 <% @public_playlists.each do |playlist| %>
 <%= link_to view_public_playlist_path(playlist.id) do %>
-<div class="public_playlist_block">
+<div class="public_playlist_block hideme">
   <img src='<%= playlist.album_art %>' class="public_image">
     <div class="pub_playlist_name"> <%= playlist.name %> </div>
   <% end %>
