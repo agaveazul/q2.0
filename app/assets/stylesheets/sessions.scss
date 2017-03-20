@@ -37,6 +37,16 @@ a.btn.logins:hover {
   color: black;
 }
 
+a.btn.parties.host-button:hover {
+  background-color: rgba(74, 199, 164, 0.9);
+  color: white;
+}
+
+a.btn.parties.join-button:hover {
+  background-color: rgba(232, 2, 103, 0.9);
+  color: white;
+}
+
 img.queue {
     width: 123px;
     height: 205px;
@@ -90,11 +100,42 @@ input[type="submit"]:hover {
 }
 
 #sign-up-button, #login-button, #playlist-button, #playlist-edit-button, #joinpage-button {
-  color: white;
-  margin-top: 10px;
-  border-radius: 500px;
-  border: 1px solid white;
-  background-color: rgba(55, 55, 55, 0) !important;
+    display: block;
+    margin-bottom: 19px;
+    background-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 500px;
+    color: white;
+    font-weight: 500;
+    letter-spacing: 1.3px;
+    border: solid 1px white;
+}
+
+button.btn.login-session#sign-up-button:hover {
+  background-color: white;
+  color: black;
+}
+
+button.btn.login-session#playlist-button:hover {
+  background-color: white;
+  color: black;
+}
+
+button.btn.login-session#login-button:hover {
+  background-color: white;
+  color: black;
+}
+
+button.btn.login-session#playlist-edit-button:hover {
+  background-color: white;
+  color: black;
+}
+
+button.btn.login-session#joinpage-button:hover {
+  background-color: white;
+  color: black;
 }
 
 .login-session {
@@ -131,19 +172,12 @@ input[type="submit"]:hover {
   text-align: center;
 }
 
-// .party-form {
-//   background-color: rgba(35, 35, 44, 0.43);
-//   // margin-top: 90px;
-//   margin-bottom: 10px;
-// }
-
 .login-form, .sign-up-form, .party-form, .join-form {
 background-color: rgba(35, 35, 44, 0.39);
 margin-bottom: 10px;
-padding: 40px;
-padding-top: 25px;
-padding-bottom: 25px;
+padding: 25px 40px;
 width: 50%;
+border-radius: 12px;
 }
 
 .title {
@@ -156,10 +190,9 @@ width: 50%;
 
 .buttons-home, .buttons-user {
   margin-top: 8px;
-  .logins {
+  .logins, .parties {
     display: block;
     margin-bottom: 19px;
-    background-color: rgba(255, 255, 255, 0);
     width: 41%;
     margin-right: auto;
     margin-left: auto;
@@ -169,10 +202,12 @@ width: 50%;
     letter-spacing: 1.3px;
     border: solid 1px white;
   }
-}
-
-btn.login-session.white {
-  // background-color: black !important;
+  .logins {
+  background-color: rgba(0, 0, 0, 0);
+  }
+  .parties {
+    background-color: rgba(0, 0, 0, 0.29);
+  }
 }
 
 .input-field label {
