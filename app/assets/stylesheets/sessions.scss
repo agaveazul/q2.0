@@ -5,6 +5,10 @@
   height: 100vh;
 }
 
+.viewable-screen-front {
+  height: 64vh;
+}
+
 #login-body, #join-body {
   position: relative;
   height: 100vh;
@@ -22,7 +26,7 @@
 }
 
 .front-pg-symbol {
-  font-size: 30px;
+  font-size: 35px;
 }
 
 .front-desc {
@@ -34,6 +38,22 @@ input {
   color: white;
   padding: 0 90px;
   border: none;
+}
+
+.public_playlist_block {
+  width: 24%;
+  display: inline-block;
+}
+
+.pub_playlist_name {
+  font-size: 1.2rem;
+  color: black;
+}
+
+.public_image {
+  width: 100%;
+  height: 100%;
+  opacity: 100%;
 }
 
 a {
@@ -58,8 +78,14 @@ a.btn.parties.join-button:hover {
 img.queue {
     width: 123px;
     height: 205px;
+    margin-top: 6rem;
 }
 
+.front {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 700;
+  margin-bottom: 3rem;
+}
 
 label {
   font-weight: bold;
@@ -142,40 +168,44 @@ button.btn.login-session#joinpage-button:hover {
 }
 
 .q-description {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.8);
   position: relative;
   top: 0px;
   opacity: 0.9;
-  padding: 45px 60px;
+  padding: 4rem 12rem;
+  text-align: center;
 }
 
 .q-instructions {
     position: relative;
     top: 0px;
     background-color: rgba(18, 168, 154, 0.9);
-    padding: 45px 60px;
+    padding: 4rem 12rem;
     color: white;
+    text-align: center;
 }
 
 .q-inst-cont {
   vertical-align: top;
+  text-align: center;
 }
 
 .q-steps {
   display: inline-block;
-  width: 20%;
-  margin: 20px;
+  width: 23%;
+  vertical-align: top;
 }
 
 .public_playlists {
       position: relative;
       top: 0px;
-      background-color: white;
+      background-color: rgba(255, 255, 255, 0.8);
       opacity: 0.9;
-      padding: 45px 60px;
+      padding: 2rem 10rem;
       color: black;
+      width: 100%;
+      text-align: center;
 }
-
 
 .intro {
   margin-top: 15px;
@@ -206,6 +236,10 @@ margin-top: 7rem;
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 65px;
   text-align: center;
+}
+
+h5 {
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .buttons-home, .buttons-user {
