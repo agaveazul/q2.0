@@ -106,6 +106,7 @@ input[type="submit"]:hover {
   background-color: white;
   position: relative;
   top: 0px;
+  opacity: 0.9;
   padding: 45px 60px;
 }
 
@@ -115,6 +116,15 @@ input[type="submit"]:hover {
     background-color: rgba(18, 168, 154, 0.9);
     padding: 45px 60px;
     color: white;
+}
+
+.public_playlists {
+      position: relative;
+      top: 0px;
+      background-color: white;
+      opacity: 0.9;
+      padding: 45px 60px;
+      color: black;
 }
 
 
