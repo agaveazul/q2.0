@@ -1,9 +1,16 @@
 
 <div class="party-form">
   <h1 class="title" id="playlist-title"> CREATE A PLAYLIST</h1>
-
-
   <%= form_for @playlist_q do |f| %>
+    <% if @playlist_q.errors.any? %>
+      <div class="error_messages">
+        <ul>
+          <% @playlist_q.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
     <div class="field input-field">
       <%= f.label :name %>
       <%= f.text_field :name %> <br />
