@@ -17,8 +17,7 @@ $('document').ready(function(){
       var playlist_id = parseInt(regExp.exec(window.location.pathname)[0]);
 
       if (data[0].id === playlist_id) {
-        if (data[0].public === true) {  //public
-          console.log('we are going public');
+        if (data[0].public) {  //public
           $('#make-public').html('Public');
           $('#make-public').toggleClass('active');
           $('.que').find('.buttons').addClass('hidden');
@@ -69,8 +68,6 @@ $('document').ready(function(){
         }}
 
         $('.song-list').html('');
-        var timeOut = 50;
-
         data[0].forEach(function(song) {
           if (song.status === "played") {
             var divContainer = $('<div>').attr('class', 'song-in-queue played').attr('data-playlist-id', playlist_id).attr('data-suggested-song-id', song.id);

@@ -99,13 +99,17 @@ $(document).on("ready", function(){
            artist: $(this).attr('artist')
          }
        }).done(function(data){
+         console.log('here comes the data');
          console.log(data);
-         console.log("Added song");
-         Materialize.toast(randomPhrase(), 3000, randomColor());
+         if (data.status === true){
+           Materialize.toast(randomPhrase(), 3000, randomColor());
+         }
+         else if (data.status === false){
+           Materialize.toast("Your song has already been Q'd up", 3000, randomColor());
+         }
 
          $(this).addClass('suggest_song1-active');
 
-       }).fail(function(data){
        })
   });
 

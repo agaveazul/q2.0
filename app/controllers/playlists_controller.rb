@@ -108,12 +108,50 @@ $counter = 0
   end
 
   def create
-    #in case the playlist_q doesnt save, in the render :new, there needs to be an @playlist
     access_code = Playlist.create_access_code
-    if playlist_params[:song_limit] == "None"
+    if playlist_params[:song_limit] == "none"
       song_limit = 1000
     else
-      song_limit = playlist_params[:song_limit]
+      song_limit = playlist_params[:song_limit].to_i
+    end
+
+    case playlist_params[:theme]
+    when 'Folk'
+      album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2014%2F05%2F21%2F15%2F18%2Fmusician-349790_640.jpg'
+    when 'Country'
+      album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2014%2F05%2F21%2F15%2F18%2Fmusician-349790_640.jpg'
+    when 'House/EDM'
+      album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1470225620780-dba8ba36b745%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3D90569f2fc49891dfcf3de69f4321930f'
+    when 'Electronic'
+      album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1470225620780-dba8ba36b745%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3D90569f2fc49891dfcf3de69f4321930f'
+    when 'Rock'
+      album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1485115369188-4bdca5e56b26%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3D2d5dd058c8675aa7868f1f6f520da2b7'
+    when 'Instrumental'
+      album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1445743432342-eac500ce72b7%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3D0bd923f1a81e99a482b9a44d339eba11'
+    when 'R&B'
+      album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1461783436728-0a9217714694%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3Dfbb40c0ee5e18f75cd35ae12d5d7288b'
+    when 'Chill'
+      album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1471560090527-d1af5e4e6eb6%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3D7ecf6c11e4900f3ede6aca96ccfae5d0'
+    when 'Alternative'
+      album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1422034681339-7b5dbb46db18%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3D612868dfdab7f353feedf528be37f3bf'
+    when 'Indie'
+        album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1422034681339-7b5dbb46db18%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3D612868dfdab7f353feedf528be37f3bf'
+    when 'Rap'
+      album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1415886541506-6efc5e4b1786%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3Dc52f1e12b2cd220405cc3db305c9ab9e'
+    when 'Hip-Hop'
+      album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1415886541506-6efc5e4b1786%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3Dc52f1e12b2cd220405cc3db305c9ab9e'
+    when 'Jazz'
+      album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1484712548363-bad7b2ff3878%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3D568508f274d090aeb841bc0b5eadecdd'
+    when 'Blues'
+      album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1484712548363-bad7b2ff3878%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3D568508f274d090aeb841bc0b5eadecdd'
+    when 'Dance'
+      album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1482575832494-771f74bf6857%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3D4d6bff93604128f856a49ab6d6b94a0e'
+    when 'Pop'
+      album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1482575832494-771f74bf6857%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3D4d6bff93604128f856a49ab6d6b94a0e'
+    when 'Other'
+      album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1466253985008-19ae27987e03%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3Daf94cfd5015fe7d97db7ce8706cb0952'
+    when 'Reggae'
+      album_image_url = 'https://static.pexels.com/photos/59870/sunset-music-reggae-musician-59870.jpeg'
     end
 
     @playlist_q = Playlist.new(
@@ -121,8 +159,9 @@ $counter = 0
       description: playlist_params[:description],
       theme: playlist_params[:theme],
       access_code: access_code,
-      song_limit: song_limit
-      )
+      song_limit: song_limit,
+      album_art: album_image_url)
+
     if @playlist_q.save
       @authorization = Authorization.new(
         playlist_id: @playlist_q.id,
@@ -158,7 +197,7 @@ $counter = 0
     @playlist = Playlist.find(params[:id])
     if @playlist.public == false
       @playlist.update_attribute('public', true)
-    else
+    elsif @playlist.public == true
       @playlist.update_attribute('public', false)
     end
 

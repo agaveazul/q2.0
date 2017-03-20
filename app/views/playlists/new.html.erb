@@ -18,7 +18,7 @@
     </div>
     <div class="field">
       <%= f.label :guest_song_limit %>
-      <%= f.select(:song_limit, @song_limits, {}, { :class => 'browser-default dropdown' }) %> <br />
+      <%= f.text_field :song_limit, placeholder: "Please type in a number or 'none' for no limit" %> <br />
     </div>
 
 
