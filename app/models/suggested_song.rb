@@ -33,10 +33,19 @@ class SuggestedSong < ApplicationRecord
     end
 
     def self.random_song
-      rand_song_id = rand(3135500..3136000)
+      rand_song_id = rand(3135500..3135600)
       random_song = HTTParty.get("https://api.deezer.com/track/#{rand_song_id}")
       rand_artist = random_song["artist"]["name"]
       rand_title = random_song["title"]
       return [rand_song_id, rand_artist, rand_title]
     end
+
+    def self.selected_song(songid)
+      song = HTTParty.get("https://api.deezer.com/track/#{songid}")
+      song_artist = song["artist"]["name"]
+      song_title = song["title"]
+      song_id = songid
+      return [song_id, song_artist, song_title]
+    end
+
 end

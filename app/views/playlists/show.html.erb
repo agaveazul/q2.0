@@ -33,7 +33,7 @@
   <%= render :partial => "dz.js" %>
   </script>
 
-  <% if @access == "Host" %>
+  <% if @access == "Host" || @playlist_q.public %>
     <script type="text/javascript">
       <%= render :partial => "player.js" %>
     </script>

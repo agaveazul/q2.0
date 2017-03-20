@@ -8,6 +8,11 @@ class SessionsController < ApplicationController
   end
 
   def frontpage
+    @public_playlists = []
+    @public_playlists << Playlist.find(1)
+    @public_playlists << Playlist.find(2)
+    @public_playlists << Playlist.find(3)
+    @public_playlists << Playlist.find(4)
     render :layout => 'alternative'
   end
 
