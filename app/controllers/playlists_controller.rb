@@ -97,7 +97,6 @@ $counter = 0
     @playlist_q = Playlist.new
     @themes = ['Pop', 'Alternative', 'Dance', 'Folk', 'Instrumental', 'Chill', 'Party', 'Blues', 'House/EDM', 'Rock', 'Rap', 'Hip-Hop', 'R&B', 'Electronic', 'Indie', 'Jazz', 'Reggae', 'Country', 'Other'].sort
     @song_limits = ['None', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-    # render :layout => "join"
   end
 
   def destroy
@@ -109,10 +108,10 @@ $counter = 0
 
   def create
     access_code = Playlist.create_access_code
-    if playlist_params[:song_limit] == "none"
+    if playlist_params[:song_limit] == "None"
       song_limit = 1000
     else
-      song_limit = playlist_params[:song_limit].to_i
+      song_limit = playlist_params[:song_limit]
     end
 
     case playlist_params[:theme]
@@ -135,7 +134,7 @@ $counter = 0
     when 'Alternative'
       album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1422034681339-7b5dbb46db18%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3D612868dfdab7f353feedf528be37f3bf'
     when 'Indie'
-        album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1422034681339-7b5dbb46db18%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3D612868dfdab7f353feedf528be37f3bf'
+      album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1422034681339-7b5dbb46db18%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3D612868dfdab7f353feedf528be37f3bf'
     when 'Rap'
       album_image_url = 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1415886541506-6efc5e4b1786%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3Dc52f1e12b2cd220405cc3db305c9ab9e'
     when 'Hip-Hop'
