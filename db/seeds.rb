@@ -18,6 +18,7 @@ Playlist.create!(
   access_code: Playlist.create_access_code,
   song_limit: 1000,
   public: true,
+  album_art: 'https://i1.wp.com/hypebeast.com/image/2016/04/drake-views-digital-booklet-4.jpg?quality=95&w=1755',
 )
 
 drake_songs = [124659382, 134711916, 124659390, 107926978, 95258826, 101308856, 124659398, 95258830, 70562483, 124659368]
@@ -43,6 +44,7 @@ Playlist.create!(
   access_code: Playlist.create_access_code,
   song_limit: 1000,
   public: true,
+  album_art: 'https://static.pexels.com/photos/59870/sunset-music-reggae-musician-59870.jpeg',
 )
 
 kanye_songs = [17605156, 17606676, 130483478,
@@ -69,6 +71,7 @@ Playlist.create!(
   access_code: Playlist.create_access_code,
   song_limit: 1000,
   public: true,
+  album_art: 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1470225620780-dba8ba36b745%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3D90569f2fc49891dfcf3de69f4321930f',
 )
 
 electronic_music = [142415429, 65720750, 142778890, 60904574, 139936597, 140295627, 100551922, 73919323, 80223674, 134033198]
@@ -94,6 +97,7 @@ Playlist.create!(
   access_code: Playlist.create_access_code,
   song_limit: 1000,
   public: true,
+  album_art: 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1422034681339-7b5dbb46db18%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3D612868dfdab7f353feedf528be37f3bf',
 )
 
 stephen_jam = [136887772, 78129603, 15546831, 133931994, 142240637, 137819053, 49532111, 114395812, 121258078,
