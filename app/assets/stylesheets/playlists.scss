@@ -384,15 +384,58 @@ iframe {
   color: white;
 }
 
+
+@media (min-width: 0px) and (max-width: 599px) {
+ .q-instructions, .q-description {
+   padding: 2rem 3rem;
+ }
+}
+
+
 @media (min-width: 600px) and (max-width: 999px) {
  .search-container {
    width: 84.95%;
  }
+ .q-steps {
+   display: block;
+ }
+ .q-instructions, .q-description {
+   padding: 4rem 12rem;
+ }
+}
+
+@media (min-width: 0px) and (max-width: 1100px) {
+ .public_playlists {
+   padding: 2rem 3rem;
+ }
+ .public_playlist_block {
+   width: 49%;
+ }
+}
+
+
+@media (min-width: 1101px) {
+  .public_playlist_block {
+
+    width: 24%;
+  }
+  .public_playlists {
+    padding: 2rem 10rem;
+
+  }
 }
 
 @media (min-width: 1000px) {
  .search-container {
    width: 70%;
+ }
+ .q-steps {
+   display: inline-block;
+   width: 24%;
+
+ }
+ .q-instructions, .q-description {
+   padding: 4rem 12rem;
  }
 }
 

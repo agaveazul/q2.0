@@ -45,8 +45,9 @@ input {
 }
 
 .public_playlist_block {
-  width: 24%;
+  // width: 24%;
   display: inline-block;
+  vertical-align: top;
 }
 
 .pub_playlist_name {
@@ -180,7 +181,7 @@ button.btn.login-session#joinpage-button:hover {
   position: relative;
   top: 0px;
   opacity: 0.9;
-  padding: 4rem 12rem;
+  // padding: 4rem 12rem;
   text-align: center;
 }
 
@@ -188,7 +189,7 @@ button.btn.login-session#joinpage-button:hover {
     position: relative;
     top: 0px;
     background-color: rgba(18, 168, 154, 0.9);
-    padding: 4rem 12rem;
+    // padding: 4rem 12rem;
     color: white;
     text-align: center;
 }
@@ -199,8 +200,8 @@ button.btn.login-session#joinpage-button:hover {
 }
 
 .q-steps {
-  display: inline-block;
-  width: 24%;
+  // display: inline-block;
+  // width: 24%;
   vertical-align: top;
   padding: 0% 0.5%;
 }
@@ -209,7 +210,7 @@ button.btn.login-session#joinpage-button:hover {
   position: relative;
   top: 0px;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 2rem 10rem;
+  // padding: 2rem 10rem;
   color: black;
   width: 100%;
   text-align: center;
