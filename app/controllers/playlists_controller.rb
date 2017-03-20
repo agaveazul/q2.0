@@ -34,7 +34,7 @@ $counter = 0
     @unplayedsongs = SuggestedSong.where(playlist_id: @playlist_q.id, status: "played").order(status: :desc, net_vote: :desc)
     @playedsongs = SuggestedSong.where(playlist_id: @playlist_q.id, status: "played")
 
-
+    render :layout => 'playlist'
   end
 
   def next_song
@@ -55,7 +55,7 @@ $counter = 0
       SuggestedSong.find(params[:song_id]).update_attribute(:status, "played")
       @next_song_id = SuggestedSong.next_song_id(params[:id])
       @next_song_record = SuggestedSong.next_song_record(params[:id])
-      songs = SuggestedSong.playlist_songs(params[:song_id])
+      songs = SuggestedSong.playlist_songs(params[:id])
       status = []
       songs.each do |song|
         status << song.status
@@ -74,6 +74,7 @@ $counter = 0
   end
 
   def join
+    render :layout => "join"
   end
 
   def add_guest
@@ -95,7 +96,8 @@ $counter = 0
   def new
     @playlist_q = Playlist.new
     @themes = ['Pop', 'Alternative', 'Dance', 'Folk', 'Instrumental', 'Chill', 'Party', 'Blues', 'House/EDM', 'Rock', 'Rap', 'Hip-Hop', 'R&B', 'Electronic', 'Indie', 'Jazz', 'Reggae', 'Country', 'Other'].sort
-    @song_limits = ['None', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    @song_limits = ['None', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+    # render :layout => "join"
   end
 
   def destroy
@@ -198,7 +200,33 @@ $counter = 0
     elsif @playlist.public == true
       @playlist.update_attribute('public', false)
     end
-    ActionCable.server.broadcast(:app, [@playlist])
+
+    @host_id = Authorization.where(playlist_id: params[:id], status: "Host")[0].user_id
+
+    @songs = SuggestedSong.playlist_songs(@playlist.id)
+
+    # this is hacking
+    status = []
+    @songs.each do |song|
+      status << song if song.status == "playing"
+    end
+
+
+    if status.count > 1
+      song_to_adjust = status.last
+      SuggestedSong.find(song_to_adjust.id).update_attribute(:status, "que")
+    end
+
+    @votes = Vote.get_votes(@playlist.id)
+
+
+
+    ActionCable.server.broadcast(:app, [@playlist, '', @host_id])
+
+    if @playlist.public == false
+      ActionCable.server.broadcast(:app, [@songs, "", @host_id, @votes])
+    end
+
   end
 
   def guestlist

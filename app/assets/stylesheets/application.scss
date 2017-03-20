@@ -21,20 +21,57 @@
    box-sizing: border-box;
  }
 
+ html {
+   height: 100%
+ }
+
+ body {
+   height: 100%
+ }
+
+ .wrapper {
+   min-height: 110%;
+   position: relative;
+ }
+
+ footer {
+  width: 100%;
+  text-align: center;
+  background-color: rgba(55, 55, 55, 0.75);
+  padding: 3px 0;
+  // bottom: -402px;
+  // position: absolute;
+  margin-top: 10px;
+  color: white;
+  position: absolute;
+  bottom: 0;
+}
+
+.front-footer {
+  width: 100%;
+  text-align: center;
+  background-color: rgba(55, 55, 55, 0.75);
+  padding: 3px 0;
+  // bottom: -402px;
+  // position: absolute;
+  margin-top: 10px;
+  color: white;
+  position: static;
+}
+
 .alternative-background {
    background: url("cottage.jpg") center center fixed no-repeat;
    background-size: cover;
  }
 
- /*.buttons-home {
-   margin-top: 500px;
-   .logins {
-     background-color: white;
-     display: block;
-   }
- }*/
+ .login-background {
+    background: url("people.jpg") center center fixed no-repeat;
+    background-size: cover;
+  }
 
-
+form {
+  border-radius: 100px;
+}
 
 img {
   height: 50px;

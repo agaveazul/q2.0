@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
 .edit-delete {
   text-align: center;
   margin-left: 6px;
@@ -132,18 +134,18 @@ label {
   font-size: 15px;
 }
 
-#host-button, #join-button {
+.host-button, .join-button {
   background-color: rgba(0, 0, 0, 0.74);
 }
 
 .party-buttons {
-  margin-top: 200px;
+  margin-top: 83px;
 }
 
-.login-session {
-  color: cadetblue;
-  width: 100%
-}
+// .login-session {
+//   color: cadetblue;
+//   width: 100%;
+// }
 
 .hidden {
   display: none;
@@ -187,5 +189,8 @@ h3 {
   text-align: center;
   color: white;
   text-decoration: underline;
+}
 
+.nav-pipe {
+    margin: 0 20px;
 }

@@ -5,6 +5,22 @@
   height: 100vh;
 }
 
+#login-body, #join-body {
+  position: relative;
+  height: 100vh;
+}
+
+#login-footer, #join-footer {
+  width: 100%;
+  text-align: center;
+  background-color: rgba(55, 55, 55, 0.75);
+  padding: 2px 0;
+  color: white;
+  position: absolute;
+  /* height: 100vh; */
+  bottom: 0;
+}
+
 input {
   // background-color: white;
   color: white;
@@ -19,6 +35,16 @@ a {
 a.btn.logins:hover {
   background-color: white;
   color: black;
+}
+
+a.btn.parties.host-button:hover {
+  background-color: rgba(74, 199, 164, 0.9);
+  color: white;
+}
+
+a.btn.parties.join-button:hover {
+  background-color: rgba(232, 2, 103, 0.9);
+  color: white;
 }
 
 img.queue {
@@ -69,15 +95,47 @@ input[type="submit"]:hover {
   color: black;
 }
 
-#playlist-button, #join-button, #playlist-edit-button {
+#playlist-button, #join-button {
   color: cadetblue;
 }
 
-#sign-up-button, #login-button {
-  color: cadetblue;
-  // color: steelblue;
-  width: 50%;
-  margin-top: 10px;
+#sign-up-button, #login-button, #playlist-button, #playlist-edit-button, #joinpage-button {
+    display: block;
+    margin-bottom: 19px;
+    background-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 500px;
+    color: white;
+    font-weight: 500;
+    letter-spacing: 1.3px;
+    border: solid 1px white;
+}
+
+button.btn.login-session#sign-up-button:hover {
+  background-color: white;
+  color: black;
+}
+
+button.btn.login-session#playlist-button:hover {
+  background-color: white;
+  color: black;
+}
+
+button.btn.login-session#login-button:hover {
+  background-color: white;
+  color: black;
+}
+
+button.btn.login-session#playlist-edit-button:hover {
+  background-color: white;
+  color: black;
+}
+
+button.btn.login-session#joinpage-button:hover {
+  background-color: white;
+  color: black;
 }
 
 .login-session {
@@ -89,15 +147,25 @@ input[type="submit"]:hover {
   background-color: white;
   position: relative;
   top: 0px;
+  opacity: 0.9;
   padding: 45px 60px;
 }
 
 .q-instructions {
     position: relative;
     top: 0px;
-    background-color: rgba(55, 55, 55, 0.75);
+    background-color: rgba(18, 168, 154, 0.9);
     padding: 45px 60px;
     color: white;
+}
+
+.public_playlists {
+      position: relative;
+      top: 0px;
+      background-color: white;
+      opacity: 0.9;
+      padding: 45px 60px;
+      color: black;
 }
 
 
@@ -114,33 +182,27 @@ input[type="submit"]:hover {
   text-align: center;
 }
 
-.party-form {
-  background-color: rgba(35, 35, 44, 0.43);
-  // margin-top: 90px;
-  margin-bottom: 10px;
-}
-
-.login-form, .sign-up-form {
-background-color: white;
+.login-form, .sign-up-form, .party-form, .join-form {
+background-color: rgba(35, 35, 44, 0.39);
 margin-bottom: 10px;
-padding: 40px;
-padding-top: 25px;
+padding: 25px 40px;
 width: 50%;
+border-radius: 12px;
 }
 
 .title {
   color: white;
   margin: 3rem 0 0.5rem 0;
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: 80px;
+  font-size: 65px;
+  padding-left: 40px;
 }
 
 .buttons-home, .buttons-user {
   margin-top: 8px;
-  .logins {
+  .logins, .parties {
     display: block;
     margin-bottom: 19px;
-    background-color: rgba(255, 255, 255, 0);
     width: 41%;
     margin-right: auto;
     margin-left: auto;
@@ -150,13 +212,26 @@ width: 50%;
     letter-spacing: 1.3px;
     border: solid 1px white;
   }
+  .logins {
+  background-color: rgba(0, 0, 0, 0);
+  }
+  .parties {
+    background-color: rgba(0, 0, 0, 0.29);
+  }
 }
 
-
-#email, #password {
-  color: cadetblue;
+.input-field label {
+  color: white !important;
 }
 
-btn.login-session.white:hover {
-  background-color: black !important;
+.input-field input {
+  border-bottom: 1px solid white !important;
+}
+
+.field label {
+  color: white !important;
+}
+
+.field input {
+  color: white !important;
 }

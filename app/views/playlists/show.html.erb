@@ -1,18 +1,16 @@
 <% if @access == "Forbidden" %>
 
-<div class="pink lighten-2 blocked-message">
-  <h1>Sorry, you have been blocked from viewing this playlist.</h1>
-  <div><%= image_tag(("emoji.png"), :class => "emoji") %></div>
-</div>
+  <div class="pink lighten-2 blocked-message">
+    <h1>Sorry, you have been blocked from viewing this playlist.</h1>
+    <div><%= image_tag(("emoji.png"), :class => "emoji") %></div>
+  </div>
 
 <% else %>
 
   <div>
   <div class="playlist-details">
   <div class="playlist-name"><%= @playlist_q.name %>&nbsp|&nbsp</div><div class="playlist-description"> <%= @playlist_q.description %>&nbsp</div>
-  <% if @access == "Host" || @access == "Guest" %>
-  <div class="playlist-code">&nbsp|&nbspAccess Code: <%=@playlist_q.access_code%></div>
-  <% end %>
+  <div class="playlist-code">&nbsp|&nbspAccess Code: <%=@playlist_q.access_code%></div> <% if @access == "Host" || @access == "Guest" %>
   <% if @access == "Host" %>
   <span class="guestlist-playlist"><button> <%= link_to "Guestlist", '#modal1' %> </button></span>
   <button id="make-public" type="submit" name="action">
@@ -35,7 +33,7 @@
   <%= render :partial => "dz.js" %>
   </script>
 
-  <% if @playlist_q.public || @access == "Host" %>
+  <% if @access == "Host" || @playlist_q.public %>
     <script type="text/javascript">
       <%= render :partial => "player.js" %>
     </script>
@@ -50,7 +48,7 @@
     <button class='hidden add-search-container'> Add a song </button>
   <% else %>
     <button class='add-search-container'> Add a song </button>
-  <%end %>
+  <% end %>
 </div>
 
   <div class="search-container hidden">
@@ -82,54 +80,107 @@
     <% end %>
 
 
-    <%= song.name %> - <%= song.artist %>
-    <span class="added-by"> | Added By: <%= User.find(song.user_id).first_name %></span>
+    <%= song.name %> - <%= song.artist %><br/>
+    <span class="added-by">Added By: <%= User.find(song.user_id).first_name %></span>
 
-
-    <% if @playlist_q.public %>
-
-        <span class="contain">
-          <span class="buttons"><button type="button" name="button" class="hidden upvote btn waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote btn waves-effect waves-light red"><i class="material-icons">thumb_down</i></button></span> &nbsp
-        </span>
-
-    <% else %>
-      <%if song.status == "que" %>
-        <% if Vote.find_by(suggestedsong_id: song.id, user_id: session[:user_id]) %>
-        <% @vote_now = Vote.find_by(suggestedsong_id: song.id, user_id: session[:user_id]).status %>
-          <% if @vote_now == "up" %>
+      <% if (@access == "Host") %> <!-- if the user is host -->
+        <% if @playlist_q.public %>
           <span class="contain">
-            <span class="buttons"><button type="button" name="button" class="upvote btn-flat waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  btn waves-effect waves-light red lighten-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
+            <span class="hidden buttons"><button type="button" name="button" class="hidden upvote btn-flat waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote  btn waves-effect waves-light red lighten-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
           </span>
-          <% elsif @vote_now == "down" %>
+          <%= link_to "Delete", playlist_suggestedsong_path(@playlist_q, song), method: :delete%>
+        <%else %>
+          <% if song.status == "que" %>
+            <% if Vote.find_by(suggestedsong_id: song.id, user_id: session[:user_id]) %>
+            <% @vote_now = Vote.find_by(suggestedsong_id: song.id, user_id: session[:user_id]).status %>
+              <% if @vote_now == "up" %>
+              <span class="contain">
+                <span class="buttons"><button type="button" name="button" class="upvote btn-flat waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  btn waves-effect waves-light red lighten-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
+              </span>
+              <% elsif @vote_now == "down" %>
+                <span class="contain">
+                  <span class="buttons"><button type="button" name="button" class="upvote btn waves-effect waves-light blue lighten-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  btn-flat waves-effect waves-light red darken-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
+                </span>
+              <% end %>
+            <% else %>
+              <span class="contain">
+                <span class="buttons"><button type="button" name="button" class="upvote btn waves-effect waves-light blue lighten-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  btn waves-effect waves-light red lighten-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
+              </span>
+            <% end %>
+
+            <%= link_to "Delete", playlist_suggestedsong_path(@playlist_q, song), method: :delete, class: 'delete-song' %>
+
+          <% elsif song.status == "playing" %>
             <span class="contain">
-              <span class="buttons"><button type="button" name="button" class="upvote btn waves-effect waves-light blue lighten-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  btn-flat waves-effect waves-light red darken-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
+              <span class="hidden buttons"><button type="button" name="button" class="hidden upvote btn waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote btn waves-effect waves-light red"><i class="material-icons">thumb_down</i></button></span> &nbsp
+            </span>
+          <% else %> <!-- if song is played -->
+
+            <span class="contain">
+              <span class="hidden buttons"><button type="button" name="button" class="hidden upvote btn waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote btn waves-effect waves-light red"><i class="material-icons">thumb_down</i></button></span> &nbsp
+            </span>
+
+            <%= link_to "Delete", playlist_suggestedsong_path(@playlist_q, song), method: :delete, class: 'delete-song' %>
+
+          <% end %> <!-- end of if the playlist is public/private -->
+        <% end %>  <!-- end of if the user is Host -->
+      <% elsif (@access == "Guest") %> <!-- if the user is Guest -->
+        <% if @playlist_q.public == false %> <!-- if playlist is private -->
+          <% if song.status == "que" %>
+            <% if Vote.find_by(suggestedsong_id: song.id, user_id: session[:user_id]) %>
+            <% @vote_now = Vote.find_by(suggestedsong_id: song.id, user_id: session[:user_id]).status %>
+              <% if @vote_now == "up" %>
+              <span class="contain">
+                <span class="buttons"><button type="button" name="button" class="upvote btn-flat waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  btn waves-effect waves-light red lighten-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
+              </span>
+              <% elsif @vote_now == "down" %>
+                <span class="contain">
+                  <span class="buttons"><button type="button" name="button" class="upvote btn waves-effect waves-light blue lighten-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  btn-flat waves-effect waves-light red darken-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
+                </span>
+              <% end %>
+            <% else %>
+              <span class="contain">
+                <span class="buttons"><button type="button" name="button" class="upvote btn waves-effect waves-light blue lighten-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  btn waves-effect waves-light red lighten-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
+              </span>
+            <% end %>
+
+            <% if (User.find(song.user_id).id == session[:user_id]) %>
+              <%= link_to "Delete", playlist_suggestedsong_path(@playlist_q, song), method: :delete%>
+            <% end %>
+
+          <% elsif song.status == "playing" %>
+            <span class="contain">
+              <span class="hidden buttons"><button type="button" name="button" class="hidden upvote btn waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote btn waves-effect waves-light red"><i class="material-icons">thumb_down</i></button></span> &nbsp
+            </span>
+          <% else %> <!-- if song is played -->
+            <span class="contain">
+              <span class="hidden buttons"><button type="button" name="button" class="hidden upvote btn waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote btn waves-effect waves-light red"><i class="material-icons">thumb_down</i></button></span> &nbsp
             </span>
           <% end %>
-        <% else %>
+        <% else %> <!-- if playlist is public -->
           <span class="contain">
-            <span class="buttons"><button type="button" name="button" class="upvote btn waves-effect waves-light blue lighten-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  btn waves-effect waves-light red lighten-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
+            <span class="hidden buttons"><button type="button" name="button" class="hidden upvote btn waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote btn waves-effect waves-light red"><i class="material-icons">thumb_down</i></button></span> &nbsp
           </span>
         <% end %>
-      <% else %>
-        <span class="contain"></span>
+      <% else %> <!-- if the user is Viewer -->
+        <span class="contain">
+          <span class="hidden buttons"><button type="button" name="button" class="hidden upvote btn waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote btn waves-effect waves-light red"><i class="material-icons">thumb_down</i></button></span> &nbsp
+        </span>
       <% end %>
+
+      <span class="heart"><span class="netvote" id=<%=song.id%>><%= song.net_vote %></span>&nbsp<i class="fa fa-heart" style="font-size:12px"></i></span>
+
+    </div> <!-- ends the song div -->
+
+    <% end %> <!-- ends the song loop -->
+
+    <div class="guest-list-container modal" id="modal1">
+      <h3 class='guest-title'>Guest List</h3>
+
+      <!-- <span class="modal-action modal-close waves-effect waves-green btn-flat">X</span> -->
+      <ol>
+      </ol>
+    </div>
+
     <% end %>
-
-  <% if (@access == "Host") or (User.find(song.user_id).id == session[:user_id]) %>
-    <%= link_to "Delete", playlist_suggestedsong_path(@playlist_q, song), method: :delete%>
-  <% end %>
-  <span class="heart"><span class="netvote" id=<%=song.id%>><%= song.net_vote %></span>&nbsp<i class="fa fa-heart" style="font-size:12px"></i></span>
-</div>
-  <% end %>
-
-
-  <div class="guest-list-container modal" id="modal1">
-    <h3 class='guest-title'>Guest List</h3>
-
-    <ol>
-
-    </ol>
-  </div>
-
-
   <% end %>

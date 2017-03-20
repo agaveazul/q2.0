@@ -11,6 +11,7 @@ $('document').ready(function(){
     },
 
     received: function(data) {
+      console.log(data);
       var userId = parseInt($('.delete_user_id').text());
       var regExp = /\d+/;
       var playlist_id = parseInt(regExp.exec(window.location.pathname)[0]);
@@ -18,55 +19,63 @@ $('document').ready(function(){
       if (data[0].id === playlist_id) {
         if (data[0].public) {  //public
           $('#make-public').html('Public');
-          $('.que').find('.btn').addClass('hidden');
-          $('.add-search-container').addClass('hidden');
           $('#make-public').toggleClass('active');
+          $('.que').find('.buttons').addClass('hidden');
+          if (userId != data[2])  { //if guest or viewer
+            $('.add-search-container').addClass('hidden');
+            $('.song-in-queue').children('a').addClass('hidden')
+          }
+          else { //if host
+            $('.playing').children('a').addClass('hidden');
+          }
         }
-        else if (data[0].public === false) {  //private
+        else if (data[0].public === false) { //private
+          console.log('we are going private');
           $('#make-public').html('Private');
-          $('.que').find('.btn').removeClass('hidden');
-          $('.add-search-container').removeClass('hidden');
           $('#make-public').toggleClass('active');
+          $('.add-search-container').removeClass('hidden');
+          // $('.que').find('.buttons').removeClass('hidden');
+          // if (userId != data[2])  { //if guest or viewer
+          // $('.song-in-queue').children('a').removeClass('hidden');
         }
-    }
+      }
 
       if (data[0][0].playlist_id === playlist_id) {
       if (data[1] === "restart") {
         console.log('we are in restarting');
         var nextSong = data[0][data[0].length - 1].song_id;
         var nextRecord = data[0][data[0].length - 1].id;
-          setTimeout(function(){DZ.player.playTracks([nextSong])}, 4000);
+          DZ.player.playTracks([nextSong]);
           $.ajax({
             url: '/playlists/' + playlist_id + '/update_song_playing?song_id=' + nextRecord,
             method: 'get',
           });
-          setTimeout(function(){DZ.Event.subscribe('track_end', function(){
+          DZ.Event.subscribe('track_end', function(){
             $.ajax({
               url: '/playlists/' + playlist_id + '/update_song?song_id=' + nextRecord,
               method: 'get',
             }).done(function(data){
+              console.log('we are updating the song to get the next song for the playlist');
+              console.log(data);
               DZ.player.playTracks([data['song_id']]);
-              nextSongRecord = data['song_record'];
+              nextRecord = data['song_record'];
               $.ajax({
                 url: '/playlists/' + playlist_id + '/playlist_broadcast',
                 method: 'get',
               })
               })
-            })},4000);
-      }}
+            });
+        }}
 
         $('.song-list').html('');
         data[0].forEach(function(song) {
           if (song.status === "played") {
             var divContainer = $('<div>').attr('class', 'song-in-queue played').attr('data-playlist-id', playlist_id).attr('data-suggested-song-id', song.id);
-            console.log(divContainer);
           }
           else if (song.status === "playing") {
             var divContainer = $('<div>').attr('class', 'song-in-queue playing').attr('data-playlist-id', playlist_id).attr('data-suggested-song-id', song.id);
-            console.log(divContainer);
           } else if (song.status === "que") {
             var divContainer = $('<div>').attr('class', 'song-in-queue que').attr('data-playlist-id', playlist_id).attr('data-suggested-song-id', song.id).attr('data-deezer-id',song.song_id);
-            console.log(divContainer);
             var span = $('<span>').attr('class',"buttons");
             var buttonUp = $('<button>').attr('type',"button").attr('name','button').attr('class','upvote btn waves-effect waves-light blue lighten-2');
             var buttonDown = $('<button>').attr('type',"button").attr('name','button').attr('class','downvote btn waves-effect waves-light red lighten-2');
@@ -85,7 +94,6 @@ $('document').ready(function(){
               }
             )
 
-
             var iconUp = $('<i>').attr('class','material-icons').html('thumb_up');
             var upButton = $(buttonUp).append(iconUp);
 
@@ -97,21 +105,26 @@ $('document').ready(function(){
         var netVote = $('<span>').attr('class','netvote').attr('id',song.id).html(song.net_vote);
 
         var heart = $(spanHeart).append(netVote).append(" ").append(iconHeart);
-        var votes = $(span).append(upButton).append(" ").append(downButton);
-        var div_replace = $(divContainer).html(song.name + ' - ' + song.artist + ' | Added By: ' + song.user_name);
 
-        if (data[2] === userId || song.user_id === userId) {
-          $(div_replace).append('<a rel="nofollow" data-method="delete" href="/playlists/' + playlist_id + '/suggestedsongs/' + song.id + '"> &nbsp Delete </a>').append(votes).append(heart);
+
+
+        var votes = $(span).append(upButton).append(" ").append(downButton);
+        var divSong = $(divContainer).html(song.name + ' - ' + song.artist);
+        var spanAdd = $('<span>').html("<br/>" + ' Added By: ' + song.user_name).addClass('added-by');
+        var div_replace = $(divSong).append(spanAdd)
+
+        if ((data[2] === userId) && (song.status != "playing")) {
+          $(div_replace).append('<a rel="nofollow" class="delete-song" data-method="delete" href="/playlists/' + playlist_id + '/suggestedsongs/' + song.id + '"> &nbsp Delete </a>').append(votes).append(heart);
+        }
+        else if ((song.user_id === userId) && song.status === "que") {
+          $(div_replace).append('<a rel="nofollow" class="delete-song" data-method="delete" href="/playlists/' + playlist_id + '/suggestedsongs/' + song.id + '"> &nbsp Delete </a>').append(votes).append(heart);
         }
         else {
           $(div_replace).append(votes).append(heart);
         }
 
-
         $(div_replace).appendTo('.song-list');
-
       })
-
     }
 
 

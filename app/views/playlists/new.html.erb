@@ -1,20 +1,20 @@
-<h1 class="title"> Create Playlist</h1>
+<h1 class="title" id="playlist-title"> CREATE A<br/> PLAYLIST</h1>
 
 <div class="party-form">
 
 
   <%= form_for @playlist_q do |f| %>
-    <div class="field">
+    <div class="field input-field">
       <%= f.label :name %>
       <%= f.text_field :name %> <br />
+    </div>
+    <div class="field input-field">
+      <%= f.label :description %>
+      <%= f.text_field :description %> <br />
     </div>
     <div class="field">
       <%= f.label :theme %>
       <%= f.select(:theme, @themes, {:prompt => "Select a Theme"}, { :class => 'browser-default dropdown' }) %> <br />
-    </div>
-    <div class="field">
-      <%= f.label :description %>
-      <%= f.text_field :description %> <br />
     </div>
     <div class="field">
       <%= f.label :guest_song_limit %>
@@ -22,8 +22,8 @@
     </div>
 
 
+    <button class="btn login-session" id="playlist-button" type="submit" name="action"> Create</button>
 </div>
 
 
-<button class="btn login-session white" id="playlist-button" type="submit" name="action"> Create Playlist</button>
 <% end %>
