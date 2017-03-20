@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170319222907) do
+ActiveRecord::Schema.define(version: 20170320045601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 20170319222907) do
     t.string   "theme"
     t.integer  "access_code"
     t.boolean  "public",      default: false
-    t.integer  "song_limit"
     t.string   "album_art"
+    t.integer  "song_limit"
   end
 
   create_table "suggested_songs", force: :cascade do |t|

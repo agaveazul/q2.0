@@ -18,12 +18,22 @@ img.playlist_image{
   margin-left: 4px;
 }
 
-.user-playlist{
+.hosteduser-playlist{
   text-align: center;
   padding-top: 50px;
   position: absolute;
   top: 8px;
   left: 5px;
+  opacity: 0;
+}
+
+.guestuser-playlist{
+  text-align: center;
+  padding-top: 50px;
+  position: absolute;
+  top: 28px;
+  left: 44px;
+  opacity: 0;
 }
 
 .playlist_image{
@@ -34,6 +44,8 @@ img.playlist_image{
   border: rgba(232, 2, 103,0.9) 1px solid;
   opacity: 0.7;
   height: 120px;
+  position: relative;
+  margin-bottom: 0px;
 }
 
 ul{
@@ -42,6 +54,9 @@ ul{
 
 .guest-playlist:hover{
   opacity: 1;
+  .guestuser-playlist{
+    opacity: 1;
+  }
 }
 
 .hosted-playlist {
@@ -54,6 +69,9 @@ ul{
 
 .hosted-playlist:hover{
   opacity: 1;
+  .hosteduser-playlist{
+    opacity: 1;
+  }
 }
 
 .hosted-playlist a {
@@ -86,14 +104,14 @@ ul{
   background-color: rgba(0, 0, 0, 0.44);
   color: white;
   margin-top: 9rem;
-  padding-bottom: 0.5rem;
+  margin-bottom: 5px;
 }
 
 .guest-playlists {
   background-color: rgba(0, 0, 0, 0.44);
   color: white;
   margin-top: 1rem;
-  padding-bottom: 0.5rem;
+  margin-bottom: 5px;
 }
 
 

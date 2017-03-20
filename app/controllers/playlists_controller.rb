@@ -107,10 +107,10 @@ $counter = 0
 
   def create
     access_code = Playlist.create_access_code
-    if playlist_params[:song_limit] == "None"
+    if playlist_params[:song_limit] == "none"
       song_limit = 1000
     else
-      song_limit = playlist_params[:song_limit]
+      song_limit = playlist_params[:song_limit].to_i
     end
 
     case playlist_params[:theme]
