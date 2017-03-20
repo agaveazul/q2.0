@@ -34,9 +34,6 @@ $('document').ready(function(){
           $('#make-public').html('Private');
           $('#make-public').toggleClass('active');
           $('.add-search-container').removeClass('hidden');
-          // $('.que').find('.buttons').removeClass('hidden');
-          // if (userId != data[2])  { //if guest or viewer
-          // $('.song-in-queue').children('a').removeClass('hidden');
         }
       }
 
@@ -65,7 +62,8 @@ $('document').ready(function(){
               })
               })
             });
-        }}
+        }
+
 
         $('.song-list').html('');
         data[0].forEach(function(song) {
@@ -113,23 +111,22 @@ $('document').ready(function(){
         var spanAdd = $('<span>').html("<br/>" + ' Added By: ' + song.user_name).addClass('added-by');
         var div_replace = $(divSong).append(spanAdd)
 
-        if ((data[2] === userId) && (song.status != "playing")) {
-          $(div_replace).append('<a rel="nofollow" class="delete-song" data-method="delete" href="/playlists/' + playlist_id + '/suggestedsongs/' + song.id + '"> &nbsp Delete </a>').append(votes).append(heart);
-        }
-        else if ((song.user_id === userId) && song.status === "que") {
-          $(div_replace).append('<a rel="nofollow" class="delete-song" data-method="delete" href="/playlists/' + playlist_id + '/suggestedsongs/' + song.id + '"> &nbsp Delete </a>').append(votes).append(heart);
-        }
-        else {
-          $(div_replace).append(votes).append(heart);
+        if (song.playlist_id > 4) {
+          if ((data[2] === userId) && (song.status != "playing")) {
+            $(div_replace).append('<a rel="nofollow" class="delete-song" data-method="delete" href="/playlists/' + playlist_id + '/suggestedsongs/' + song.id + '"> &nbsp Delete </a>')
+          }
+          else if ((song.user_id === userId) && song.status === "que") {
+            $(div_replace).append('<a rel="nofollow" class="delete-song" data-method="delete" href="/playlists/' + playlist_id + '/suggestedsongs/' + song.id + '"> &nbsp Delete </a>')
+          }
+
+        $(div_replace).append(votes);
         }
 
+        $(div_replace).append(heart);
         $(div_replace).appendTo('.song-list');
-      })
-    }
-
-
-})
-
+        })
+      }
+      }
+    })
   }
-
 )
