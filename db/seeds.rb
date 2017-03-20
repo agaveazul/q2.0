@@ -45,7 +45,7 @@ Playlist.create!(
   public: true,
 )
 
-kanye_songs = [17605156, 17606676, 130483478, 6815326,
+kanye_songs = [17605156, 17606676, 130483478,
 127162941, 127162929, 127162921, 127162909, 17599495, 130483482, 93519236]
 
 kanye_songs.each do |song|
@@ -64,7 +64,7 @@ end
 
 Playlist.create!(
   name: "Tomorrowland: Toronto",
-  description: "deadmou5 resurrected",
+  description: "Digital Dreaming",
   theme: "House/EDM",
   access_code: Playlist.create_access_code,
   song_limit: 1000,
@@ -114,8 +114,8 @@ stephen_jam.each do |song|
 end
 
 User.create!(
-  first_name: "Bit",
-  last_name: "Maker",
+  first_name: "Bitmaker",
+  last_name: "Labs",
   email: "bit@maker.com",
   password: "password",
   password_confirmation: "password",
@@ -131,20 +131,8 @@ User.create!(
   )
 end
 
-10.times do
-  Playlist.create!(
-    name: Faker::App.name,
-    description: "Let's Party!",
-    theme: ['Pop', 'Alternative', 'Dance', 'Folk', 'Instrumental', 'Chill', 'Party', 'Blues', 'House/EDM', 'Rock', 'Rap', 'Hip-Hop', 'R&B', 'Electronic', 'Indie', 'Jazz', 'Reggae', 'Country', 'Other'].sample,
-    access_code: Playlist.create_access_code,
-    song_limit: 1000,
-    public: true,
-  )
-end
-
 counter = 0
-
-14.times do
+4.times do
   counter += 1
   Authorization.create!(
   playlist_id: counter,
@@ -158,19 +146,5 @@ end
   playlist_id: rand(1..14),
   user_id: rand(2..10),
   status: "Guest",
-  )
-end
-
-100.times do
-  song = SuggestedSong.random_song
-  SuggestedSong.create!(
-    song_id: song[0],
-    playlist_id: rand(5..14),
-    user_id: rand(1..10),
-    name: song[2],
-    net_vote: rand(1..10),
-    artist: song[1],
-    user_name: Faker::Name.first_name,
-    status: 'que',
   )
 end

@@ -1,0 +1,29 @@
+<div class="playlist-details">
+  <div class="playlist-name"><%= @playlist_q.name %>&nbsp|&nbsp</div><div class="playlist-description"> <%= @playlist_q.description %>&nbsp</div>
+</div>
+
+<div id="d_player"></div>
+<div id="dz-root"></div>
+
+<script type="text/javascript">
+<%= render :partial => "dz.js" %>
+</script>
+
+<script type="text/javascript">
+  <%= render :partial => "player.js" %>
+</script>
+
+<script type="text/javascript">
+  <%= render :partial => "nextsong.js" %>
+</script>
+
+<div class="song-list">
+  <% @songs.each do |song| %>
+    <div class="song-in-queue que" data-playlist-id=<%=@playlist_q.id%> data-suggested-song-id=<%= song.id %>>
+    <%= song.name %> - <%= song.artist %><br/>
+    <span class="added-by">Added By: <%= User.find(song.user_id).first_name %></span>
+
+    <span class="heart"><span class="netvote" id=<%=song.id%>><%= song.net_vote %></span>&nbsp<i class="fa fa-heart" style="font-size:12px"></i></span>
+    </div> <!-- ends the song div -->
+  <% end %> <!-- ends the song loop -->
+</div>
