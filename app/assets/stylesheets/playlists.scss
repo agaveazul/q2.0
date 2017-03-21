@@ -393,6 +393,40 @@ button.downvote.btn.darken-2 {
     text-align: center;
   }
 
+  .hosteduser-playlist{
+    text-align: left;
+    padding-top: 45px;
+    position: absolute;
+    top: 19%;
+    left: 2%;
+    color: white;
+  }
+
+  .guestuser-playlist{
+    text-align: left;
+    padding-top: 45px;
+    position: absolute;
+    top: 33%;
+    left: 2%;
+    color: white;
+  }
+
+  .hosted-playlist {
+    border: rgba(74, 199, 164, 0.9) 1px solid;
+    opacity: 0.7;
+    height: 10rem;
+    position: relative;
+    margin-bottom: 0px;
+  }
+
+  .guest-playlist {
+    border: rgba(232, 2, 103,0.9) 1px solid;
+    opacity: 0.7;
+    height: 10rem;
+    position: relative;
+    margin-bottom: 0px;
+  }
+
   i.material-icons.front-pg-symbol {
     position: relative;
 }
@@ -463,6 +497,46 @@ button.downvote.btn.darken-2 {
 
 }
 
+@media (min-width: 481px) {
+  .edit-delete {
+    text-align: center;
+    opacity: 1;
+  }
+  .hosted-playlist {
+    border: rgba(74, 199, 164, 0.9) 1px solid;
+    opacity: 0.7;
+    height: 12rem;
+    position: relative;
+    margin-bottom: 0px;
+  }
+
+  .guest-playlist {
+    border: rgba(232, 2, 103,0.9) 1px solid;
+    opacity: 0.7;
+    height: 12rem;
+    position: relative;
+    margin-bottom: 0px;
+  }
+
+  .hosteduser-playlist{
+    text-align: left;
+    padding-top: 45px;
+    position: absolute;
+    top: 32%;
+    left: 2%;
+    color: white;
+  }
+
+  .guestuser-playlist{
+    text-align: left;
+    padding-top: 50px;
+    position: absolute;
+    top: 44%;
+    left: 2%;
+    color: white;
+  }
+}
+
 @media (min-width: 0px) and (max-width: 599px) {
  .q-instructions, .q-description {
    padding: 2rem 3rem;
@@ -493,15 +567,6 @@ button.downvote.btn.darken-2 {
    text-align: center;
    width: 45%;
    display: inline-block;
- }
-
- .hosteduser-playlist{
-   text-align: left;
-   padding-top: 45px;
-   position: absolute;
-   top: 32%;
-   left: 2%;
-   color: white;
  }
 
  .artist-title, .album-title{
@@ -574,15 +639,6 @@ button.downvote.btn.darken-2 {
    text-align: center;
    width: 19%;
    display: inline-block;
- }
-
- .hosteduser-playlist{
-   text-align: left;
-   padding-top: 45px;
-   position: absolute;
-   top: 32%;
-   left: 2%;
-   color: white;
  }
 
  footer {
@@ -713,15 +769,6 @@ button.downvote.btn.darken-2 {
  .q-instructions, .q-description {
    padding: 4rem 12rem;
  }
-}
-
-.hosteduser-playlist{
-  text-align: left;
-  padding-top: 45px;
-  position: absolute;
-  top: 32%;
-  left: 2%;
-  color: white;
 }
 
 

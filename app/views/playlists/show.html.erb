@@ -95,7 +95,7 @@
           <span class="contain">
             <span class="hidden buttons"><button type="button" name="button" class="hidden upvote btn-flat waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote  btn waves-effect waves-light red lighten-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
           </span>
-          <a href="/playlists/<%=@playlist_q.id%>/suggestedsongs/<%=song.id%>" rel="nofollow" class="btn-flat waves-effect waves-light blue delete-song" data-method="delete">Delete</a>
+          <a href="/playlists/<%=@playlist_q.id%>/suggestedsongs/<%=song.id%>" rel="nofollow" class="btn-flat waves-effect waves-light blue delete-song" data-method="delete"></a>
           <%#= link_to "Delete", playlist_suggestedsong_path(@playlist_q, song), method: :delete%>
         <%else %>
           <% if song.status == "que" %>
