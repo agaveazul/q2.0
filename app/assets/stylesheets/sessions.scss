@@ -1,6 +1,16 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.error_messages {
+    background-color: gray;
+    color: white;
+    opacity: 0.8;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
 .viewable-screen {
   height: 100vh;
 }
@@ -14,7 +24,7 @@
 }
 
 #alert {
-  color: red;
+  color: white;
   text-align: center;
 }
 

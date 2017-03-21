@@ -20,7 +20,7 @@ img.playlist_image{
 
 
 .error_messages {
-  color: red;
+  color: white;
 }
 
 .guestuser-playlist{
@@ -183,4 +183,10 @@ h3 {
 
 .nav-pipe {
     margin: 0 20px;
+}
+
+@media (max-width: 480px) {
+  .nav-pipe {
+  margin: 0 5px;
+  }
 }
