@@ -390,6 +390,78 @@ button.downvote.btn.darken-2 {
   color: white;
 }
 
+@media (max-width: 480px) {
+  .playlist-code {
+    display: block;
+    text-align: center;
+  }
+
+  .playlist-details {
+    text-align: center;
+    height: 100%;
+    line-height: 20px;
+  }
+
+  span.guestlist-playlist {
+    width: 50%;
+  }
+
+  .guestlist-playlist {
+    float: none;
+  }
+
+  #make-public {
+    float: none;
+  }
+
+  .playlist-name {
+    padding-left: 0;
+  }
+
+  //  Deezer Player
+  div#d_player {
+      height: 62px;
+  }
+
+  //vote
+  .buttons {
+    display: block;
+    position: inherit;
+    right: 0;
+    bottom: 0;
+  }
+
+  button.upvote, button.downvote {
+    position: relative;
+  }
+
+  i.material-icons {
+    position: absolute;
+    bottom: 0px;
+    right: 17px;
+  }
+
+  a.delete-song {
+    position: absolute;
+    left: 57%;
+    top: 56%;
+    width: 20%;
+    height: 30px;
+    padding: 0px 0px 5px 6px;
+    color: white;
+    font-size: 10px;
+  }
+
+  .song-in-queue.played a.delete-song, .song-in-queue.playing a.delete-song  {
+    top: 36%;
+  }
+
+  .song-in-queue.que {
+    height: 7rem;
+  }
+
+}
+
 @media (min-width: 600px) and (max-width: 999px) {
  .search-container {
    width: 84.95%;

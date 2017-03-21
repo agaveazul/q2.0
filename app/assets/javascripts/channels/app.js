@@ -115,10 +115,10 @@ $('document').ready(function(){
         if (song.playlist_id > 4) {
 
           if ((data[2] === userId) && (song.status != "playing")) {
-            $(div_replace).append('<a rel="nofollow" class="delete-song" data-method="delete" href="/playlists/' + playlist_id + '/suggestedsongs/' + song.id + '"> &nbsp Delete </a>')
+            $(div_replace).append('<a rel="nofollow" class="btn-flat waves-effect waves-light blue delete-song" data-method="delete" href="/playlists/' + playlist_id + '/suggestedsongs/' + song.id + '"> &nbsp Delete </a>')
           }
           else if ((song.user_id === userId) && song.status === "que") {
-            $(div_replace).append('<a rel="nofollow" class="delete-song" data-method="delete" href="/playlists/' + playlist_id + '/suggestedsongs/' + song.id + '"> &nbsp Delete </a>')
+            $(div_replace).append('<a rel="nofollow" class="btn-flat waves-effect waves-light blue delete-song" data-method="delete" href="/playlists/' + playlist_id + '/suggestedsongs/' + song.id + '"> &nbsp Delete </a>')
           }
 
           if (data[4].public == false) {
