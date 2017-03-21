@@ -13,6 +13,11 @@
   opacity: 0;
 }
 
+#alert {
+  color: red;
+  text-align: center;
+}
+
 #login-body, #join-body {
   position: relative;
   height: 100vh;
@@ -229,11 +234,10 @@ button.btn.login-session#joinpage-button:hover {
   text-align: center;
 }
 
-.login-form, .sign-up-form, .party-form, .join-form {
+.login-form, .join-form, .party-form, .sign-up-form{
 background-color: rgba(35, 35, 44, 0.39);
 margin-bottom: 10px;
 padding: 25px 40px;
-width: 50%;
 border-radius: 12px;
 margin: auto;
 margin-top: 7rem;
@@ -251,12 +255,33 @@ h5 {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-.buttons-home, .buttons-user {
+.buttons-home {
   margin-top: 8px;
   .logins, .parties {
     display: block;
     margin-bottom: 19px;
     width: 41%;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 500px;
+    color: white;
+    font-weight: 500;
+    letter-spacing: 1.3px;
+    border: solid 1px white;
+  }
+  .logins {
+  background-color: rgba(0, 0, 0, 0);
+  }
+  .parties {
+    background-color: rgba(0, 0, 0, 0.29);
+  }
+}
+
+.buttons-user {
+  margin-top: 8px;
+  .logins, .parties {
+    display: block;
+    margin-bottom: 19px;
     margin-right: auto;
     margin-left: auto;
     border-radius: 500px;
