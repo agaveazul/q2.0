@@ -13,6 +13,11 @@
   opacity: 0;
 }
 
+#alert {
+  color: red;
+  text-align: center;
+}
+
 #login-body, #join-body {
   position: relative;
   height: 100vh;
@@ -45,8 +50,9 @@ input {
 }
 
 .public_playlist_block {
-  width: 24%;
+  // width: 24%;
   display: inline-block;
+  vertical-align: top;
 }
 
 .pub_playlist_name {
@@ -57,6 +63,10 @@ input {
 .public_image {
   width: 100%;
   height: 100%;
+  opacity: 0.9;
+}
+
+.public_image:hover {
   opacity: 1;
 }
 
@@ -158,7 +168,7 @@ button.btn.login-session#joinpage-button:hover {
   position: relative;
   top: 0px;
   opacity: 0.9;
-  padding: 4rem 12rem;
+  // padding: 4rem 12rem;
   text-align: center;
 }
 
@@ -166,7 +176,7 @@ button.btn.login-session#joinpage-button:hover {
     position: relative;
     top: 0px;
     background-color: rgba(18, 168, 154, 0.9);
-    padding: 4rem 12rem;
+    // padding: 4rem 12rem;
     color: white;
     text-align: center;
 }
@@ -177,17 +187,17 @@ button.btn.login-session#joinpage-button:hover {
 }
 
 .q-steps {
-  display: inline-block;
-  width: 24%;
+  // display: inline-block;
+  // width: 24%;
   vertical-align: top;
-  padding: 0% 2%;
+  padding: 0% 0.5%;
 }
 
 .public_playlists {
   position: relative;
   top: 0px;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 2rem 10rem;
+  // padding: 2rem 10rem;
   color: black;
   width: 100%;
   text-align: center;
@@ -206,11 +216,10 @@ button.btn.login-session#joinpage-button:hover {
   text-align: center;
 }
 
-.login-form, .sign-up-form, .party-form, .join-form {
+.login-form, .join-form, .party-form, .sign-up-form{
 background-color: rgba(35, 35, 44, 0.39);
 margin-bottom: 10px;
 padding: 25px 40px;
-width: 50%;
 border-radius: 12px;
 margin: auto;
 margin-top: 7rem;
@@ -228,12 +237,33 @@ h5 {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-.buttons-home, .buttons-user {
+.buttons-home {
   margin-top: 8px;
   .logins, .parties {
     display: block;
     margin-bottom: 19px;
     width: 41%;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 500px;
+    color: white;
+    font-weight: 500;
+    letter-spacing: 1.3px;
+    border: solid 1px white;
+  }
+  .logins {
+  background-color: rgba(0, 0, 0, 0);
+  }
+  .parties {
+    background-color: rgba(0, 0, 0, 0.29);
+  }
+}
+
+.buttons-user {
+  margin-top: 8px;
+  .logins, .parties {
+    display: block;
+    margin-bottom: 19px;
     margin-right: auto;
     margin-left: auto;
     border-radius: 500px;

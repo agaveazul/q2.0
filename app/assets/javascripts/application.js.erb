@@ -105,7 +105,7 @@ $(document).on("ready", function(){
            Materialize.toast(randomPhrase(), 3000, randomColor());
          }
          else if (data.status === false){
-           Materialize.toast("Your song has already been Q'd up", 3000, randomColor());
+           Materialize.toast("Your song has already been Q'd up", 3000, 'red darken-2');
          }
 
          $(this).addClass('suggest_song1-active');
@@ -239,7 +239,9 @@ $(document).on("ready", function(){
         image_container =$(image_container).append(img);
         var artist_title = $('<div>').addClass('artist-title').html(data["artists"]['data'][i]["name"]);
 
+
         $(contain).append((div).append(image_container).append(artist_title));
+
 
       }
         $('#search_results_artists').append(contain);
