@@ -22,6 +22,7 @@ $nav-grey: rgba(35, 35, 44, 0.39);
   opacity: 0.7;
   position: relative;
 }
+
 i.fa.fa-plus-circle {
   position: absolute;
   left: 0.2rem;
@@ -392,6 +393,10 @@ button.downvote.btn.darken-2 {
    padding: 2rem 3rem;
  }
 
+ .artist, .album, .inner-artist, .inner-album {
+   width: 50%;
+ }
+
  .host-button, .join-button{
    width: 65%;
  }
@@ -416,6 +421,13 @@ button.downvote.btn.darken-2 {
    color: white;
  }
 
+ .artist-title, .album-title{
+   text-align:center;
+   width: 88%;
+   margin: auto;
+   font-size: 0.8rem;
+ }
+
  footer {
   width: 100%;
   text-align: center;
@@ -428,6 +440,15 @@ button.downvote.btn.darken-2 {
   position: absolute;
   bottom: 0;
   font-size: 9px;
+  }
+  .song-listing{
+    line-height: 2.5rem;
+    font-size: 20px;
+    margin-left: 1%;
+    width: 100%;
+    display: inline-block;
+    opacity: 0.7;
+    position: relative;
   }
 }
 
@@ -487,6 +508,16 @@ button.downvote.btn.darken-2 {
   bottom: 0;
   font-size: 12px;
   }
+
+  .song-listing{
+    line-height: 2.5rem;
+    font-size: 20px;
+    margin-left: 1%;
+    width: 49%;
+    display: inline-block;
+    opacity: 0.7;
+    position: relative;
+  }
 }
 
 @media (min-width: 0px) and (max-width: 1100px) {
@@ -495,6 +526,15 @@ button.downvote.btn.darken-2 {
  }
  .public_playlist_block {
    width: 49%;
+ }
+ .song-listing{
+   line-height: 2.5rem;
+   font-size: 20px;
+   margin-left: 1%;
+   width: 100%;
+   display: inline-block;
+   opacity: 0.7;
+   position: relative;
  }
 }
 
@@ -505,6 +545,15 @@ button.downvote.btn.darken-2 {
   }
   .public_playlists {
     padding: 2rem 10rem;
+  }
+  .song-listing{
+    line-height: 2.5rem;
+    font-size: 20px;
+    margin-left: 1%;
+    width: 49%;
+    display: inline-block;
+    opacity: 0.7;
+    position: relative;
   }
 
 }
@@ -519,6 +568,16 @@ button.downvote.btn.darken-2 {
    margin-bottom: 10px;
    margin: auto;
    margin-top: 7rem;
+ }
+
+ .song-listing{
+   line-height: 2.5rem;
+   font-size: 20px;
+   margin-left: 1%;
+   width: 49%;
+   display: inline-block;
+   opacity: 0.7;
+   position: relative;
  }
 
  footer {
