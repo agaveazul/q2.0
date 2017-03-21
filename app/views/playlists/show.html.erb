@@ -9,8 +9,8 @@
 
   <div>
   <div class="playlist-details">
-  <div class="playlist-name"><%= @playlist_q.name %>&nbsp|&nbsp</div><div class="playlist-description"> <%= @playlist_q.description %>&nbsp</div>
-  <div class="playlist-code">&nbsp|&nbspAccess Code: <%=@playlist_q.access_code%></div> <% if @access == "Host" || @access == "Guest" %>
+  <div class="playlist-name">&nbsp<%= @playlist_q.name %>&nbsp</div><div class="playlist-description">&nbsp<%= @playlist_q.description %>&nbsp</div>
+  <div class="playlist-code">&nbsp Access Code: <%=@playlist_q.access_code%></div> <% if @access == "Host" || @access == "Guest" %>
   <% if @access == "Host" %>
 
   <span class="guestlist-playlist"><a class="waves-effect waves-light btn cyan darken-4" href='#modal1'>Guest List</a></span>
@@ -39,6 +39,9 @@
       <%= render :partial => "player.js" %>
     </script>
   <% end %>
+
+  <link rel="stylesheet" media="all" href="cssbasic.css" />
+<link rel="stylesheet" media="(min-width: 500px)" href="csswide.css" />
 
   <script type="text/javascript">
     <%= render :partial => "nextsong.js" %>
@@ -92,7 +95,8 @@
           <span class="contain">
             <span class="hidden buttons"><button type="button" name="button" class="hidden upvote btn-flat waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote  btn waves-effect waves-light red lighten-2"><i class="material-icons">thumb_down</i></button></span> &nbsp
           </span>
-          <%= link_to "Delete", playlist_suggestedsong_path(@playlist_q, song), method: :delete%>
+          <a href="/playlists/<%=@playlist_q.id%>/suggestedsongs/<%=song.id%>" rel="nofollow" class="btn-flat waves-effect waves-light blue delete-song" data-method="delete">Delete</a>
+          <%#= link_to "Delete", playlist_suggestedsong_path(@playlist_q, song), method: :delete%>
         <%else %>
           <% if song.status == "que" %>
             <% if Vote.find_by(suggestedsong_id: song.id, user_id: session[:user_id]) %>
@@ -112,7 +116,8 @@
               </span>
             <% end %>
 
-            <%= link_to "Delete", playlist_suggestedsong_path(@playlist_q, song), method: :delete, class: 'delete-song' %>
+            <a href="/playlists/<%=@playlist_q.id%>/suggestedsongs/<%=song.id%>" rel="nofollow" class="btn-flat waves-effect waves-light blue delete-song" data-method="delete">Delete</a>
+            <%#= link_to "Delete", playlist_suggestedsong_path(@playlist_q, song), method: :delete, class: 'delete-song' %>
 
           <% elsif song.status == "playing" %>
             <span class="contain">
@@ -124,7 +129,8 @@
               <span class="hidden buttons"><button type="button" name="button" class="hidden upvote btn waves-effect waves-light blue darken-2"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote btn waves-effect waves-light red"><i class="material-icons">thumb_down</i></button></span> &nbsp
             </span>
 
-            <%= link_to "Delete", playlist_suggestedsong_path(@playlist_q, song), method: :delete, class: 'delete-song' %>
+            <a href="/playlists/<%=@playlist_q.id%>/suggestedsongs/<%=song.id%>" rel="nofollow" class="btn-flat waves-effect waves-light blue delete-song" data-method="delete">Delete</a>
+            <%#= link_to "Delete", playlist_suggestedsong_path(@playlist_q, song), method: :delete, class: 'delete-song' %>
 
           <% end %> <!-- end of if the playlist is public/private -->
         <% end %>  <!-- end of if the user is Host -->
@@ -149,7 +155,8 @@
             <% end %>
 
             <% if (User.find(song.user_id).id == session[:user_id]) %>
-              <%= link_to "Delete", playlist_suggestedsong_path(@playlist_q, song), method: :delete%>
+              <a href="/playlists/<%=@playlist_q.id%>/suggestedsongs/<%=song.id%>" rel="nofollow" class="btn-flat waves-effect waves-light blue delete-song" data-method="delete">Delete</a>
+              <%#= link_to "Delete", playlist_suggestedsong_path(@playlist_q, song), method: :delete%>
             <% end %>
 
           <% elsif song.status == "playing" %>
