@@ -11,7 +11,6 @@ $('document').ready(function(){
     },
 
     received: function(data) {
-      console.log(data);
       var userId = parseInt($('.delete_user_id').text());
       var regExp = /\d+/;
       var playlist_id = parseInt(regExp.exec(window.location.pathname)[0]);
