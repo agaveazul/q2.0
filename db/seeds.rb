@@ -28,24 +28,13 @@ User.create!(
   )
 end
 
-
-counter = 0
-4.times do
-  counter += 1
-  Authorization.create!(
-  playlist_id: counter,
-  user_id: 1,
-  status: "Host",
-  )
-end
-
-20.times do
-  Authorization.create!(
-  playlist_id: rand(1..14),
-  user_id: rand(2..10),
-  status: "Guest",
-  )
-end
+# 20.times do
+#   Authorization.create!(
+#   playlist_id: rand(1..14),
+#   user_id: rand(2..10),
+#   status: "Guest",
+#   )
+# end
 
 
 Playlist.create!(
@@ -151,5 +140,15 @@ stephen_jam.each do |song|
     artist: s[1],
     user_name: Faker::Name.first_name,
     status: 'que',
+  )
+end
+
+counter = 0
+4.times do
+  counter += 1
+  Authorization.create!(
+  playlist_id: counter,
+  user_id: 1,
+  status: "Host",
   )
 end
