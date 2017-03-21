@@ -32,8 +32,13 @@ $(document).on("ready", function(){
       });
       $('body').delegate('.guest-delete', 'click', function(event) {
 
-        var guestId = parseInt($(this).parents('.guest').attr("guest-id"))
-        console.log("[" + playlistId + "," + guestId + "]");
+        var guestId = parseInt($(this).parents('.guest').attr("guest-id"));
+
+        if ($(this).html()=== "Block Guest") {
+          $(this).html('Unblock Guest')
+        } else {
+          $(this).html('Block Guest')
+        }
         $.ajax({
           url: '/playlists/' + playlistId + '/update_authorization',
           method: "POST",
@@ -42,14 +47,6 @@ $(document).on("ready", function(){
             user_id: guestId
           }
         }).done(function(data) {
-          console.log('updating');
-          if ($('.guest-delete').html()==="Block Guest") {
-            console.log('changing to unblock');
-            $('.guest-delete').html('Unblock Guest')
-          } else {
-            console.log('changing to block');
-            $('.guest-delete').html('Block Guest')
-          }
         })
 
       })
