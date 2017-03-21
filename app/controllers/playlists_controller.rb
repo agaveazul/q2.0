@@ -100,9 +100,9 @@ $counter = 0
   end
 
   def new
+    set_themes
+    set_song_limit
     @playlist_q = Playlist.new
-    @themes = ['Pop', 'Alternative', 'Dance', 'Folk', 'Instrumental', 'Chill', 'Party', 'Blues', 'House/EDM', 'Rock', 'Rap', 'Hip-Hop', 'R&B', 'Electronic', 'Indie', 'Jazz', 'Reggae', 'Country', 'Other'].sort
-    @song_limits = ['None', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
   end
 
   def destroy
@@ -113,6 +113,8 @@ $counter = 0
   end
 
   def create
+    set_themes
+    set_song_limit
     access_code = Playlist.create_access_code
     if playlist_params[:song_limit] == "None"
       song_limit = 1000
@@ -186,12 +188,14 @@ $counter = 0
   end
 
   def edit
+    set_themes
+    set_song_limit
     @playlist_q = Playlist.find(params[:id])
-    @themes = ['Pop', 'Alternative', 'Dance', 'Folk', 'Instrumental', 'Chill', 'Party', 'Blues', 'House/EDM', 'Rock', 'Rap', 'Hip-Hop', 'R&B', 'Electronic', 'Indie', 'Jazz', 'Reggae', 'Country', 'Other'].sort
-    @song_limits = ['None', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   end
 
   def update
+    set_themes
+    set_song_limit
     @playlist_q = Playlist.find(params[:id])
       if @playlist_q.update_attributes(playlist_params)
         redirect_to user_path(session[:user_id])
@@ -274,5 +278,11 @@ private
       params.require(:playlist).permit(:name, :description, :theme, :song_limit)
   end
 
+  def set_themes
+    @themes = ['Pop', 'Alternative', 'Dance', 'Folk', 'Instrumental', 'Chill', 'Party', 'Blues', 'House/EDM', 'Rock', 'Rap', 'Hip-Hop', 'R&B', 'Electronic', 'Indie', 'Jazz', 'Reggae', 'Country', 'Other'].sort
+  end
 
+  def set_song_limit
+    @song_limits = ['None', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+  end
 end

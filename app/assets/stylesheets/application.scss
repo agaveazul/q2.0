@@ -30,22 +30,15 @@
  }
 
  .wrapper {
-   min-height: 110%;
+   min-height: 140%;
    position: relative;
  }
 
- footer {
-  width: 100%;
-  text-align: center;
-  background-color: rgba(55, 55, 55, 0.75);
-  padding: 3px 0;
-  // bottom: -402px;
-  // position: absolute;
-  margin-top: 10px;
-  color: white;
-  position: absolute;
-  bottom: 0;
-}
+ .wrapper-signup {
+   min-height: 160%;
+   position: relative;
+ }
+
 
 .front-footer {
   width: 100%;
