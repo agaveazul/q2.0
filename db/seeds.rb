@@ -54,7 +54,7 @@ drake_songs.each do |song|
   SuggestedSong.create!(
     song_id: s[0],
     playlist_id: 1,
-    user_id: rand(1..10),
+    user_id: rand(1..4),
     name: s[2],
     net_vote: rand(1..10),
     artist: s[1],
@@ -81,7 +81,7 @@ kanye_songs.each do |song|
   SuggestedSong.create!(
     song_id: s[0],
     playlist_id: 2,
-    user_id: rand(1..10),
+    user_id: rand(1..4),
     name: s[2],
     net_vote: rand(1..10),
     artist: s[1],
@@ -107,7 +107,7 @@ electronic_music.each do |song|
   SuggestedSong.create!(
     song_id: s[0],
     playlist_id: 3,
-    user_id: rand(1..10),
+    user_id: rand(1..4),
     name: s[2],
     net_vote: rand(1..10),
     artist: s[1],
@@ -134,7 +134,7 @@ stephen_jam.each do |song|
   SuggestedSong.create!(
     song_id: s[0],
     playlist_id: 4,
-    user_id: rand(1..10),
+    user_id: rand(1..4),
     name: s[2],
     net_vote: rand(1..10),
     artist: s[1],
