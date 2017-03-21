@@ -1,5 +1,4 @@
 class PlaylistsController < ApplicationController
-$counter = 0
 
   def player
     render :player, layout: false
