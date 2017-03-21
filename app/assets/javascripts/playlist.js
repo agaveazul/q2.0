@@ -75,6 +75,11 @@ $(document).on("ready", function(){
     };
   });
 
+  $("body").delegate('.delete-song', 'click', function(event){
+    Materialize.toast("Song deleted!", 3000, 'red');
+
+  });
+
 
 
 });
