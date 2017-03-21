@@ -239,7 +239,9 @@ $(document).on("ready", function(){
         image_container =$(image_container).append(img);
         var artist_title = $('<div>').addClass('artist-title').html(data["artists"]['data'][i]["name"]);
 
+
         $(contain).append((div).append(image_container).append(artist_title));
+
 
       }
         $('#search_results_artists').append(contain);
