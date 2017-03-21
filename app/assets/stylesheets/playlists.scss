@@ -461,6 +461,15 @@ button.downvote.btn.darken-2 {
     height: 7rem;
   }
 
+  // 4 Star Playlists
+  .song-in-queue.public-que {
+      height: 4rem;
+  }
+
+  .public-que .heart {
+    bottom: 4px;
+  }
+
 }
 
 @media (min-width: 0px) and (max-width: 599px) {

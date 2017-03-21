@@ -19,7 +19,7 @@
 
 <div class="song-list">
   <% @songs.each do |song| %>
-    <div class="song-in-queue que" data-playlist-id=<%=@playlist_q.id%> data-suggested-song-id=<%= song.id %>>
+    <div class="song-in-queue que public-que" data-playlist-id=<%=@playlist_q.id%> data-suggested-song-id=<%= song.id %>>
     <%= song.name %> - <%= song.artist %><br/>
     <span class="added-by">Added By: <%= User.find(song.user_id).first_name %></span>
 
