@@ -468,6 +468,10 @@ button.downvote.btn.darken-2 {
    padding: 2rem 3rem;
  }
 
+ .viewable-screen-front {
+   height: 80vh;
+ }
+
  .artist, .album, .inner-artist, .inner-album {
    width: 50%;
  }
@@ -530,6 +534,10 @@ button.downvote.btn.darken-2 {
 @media (min-width: 600px) and (max-width: 999px) {
  .search-container {
    width: 84.95%;
+ }
+
+ .viewable-screen-front {
+   height: 64vh;
  }
 
  .q-steps {
@@ -635,6 +643,10 @@ button.downvote.btn.darken-2 {
 @media (min-width: 1000px) {
  .search-container {
    width: 70%;
+ }
+
+ .viewable-screen-front {
+   height: 64vh;
  }
 
  .login-form, .join-form, .party-form, .sign-up-form{
