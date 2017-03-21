@@ -19,7 +19,7 @@ $.ajax({
   }).done(function(data){
     console.log("Update song to playing");
     $('.que').first().find('.buttons').addClass('hidden');
-    $('.que').first().children('a').addClass('hidden');
+    $('.que').first().find('a').css('display','none');
     $('.que').first().addClass('playing').removeClass('que');
   });
   setTimeout(function(){DZ.Event.subscribe('track_end', function(){
