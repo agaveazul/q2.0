@@ -30,15 +30,6 @@ User.create!(
   )
 end
 
-20.times do
-  Authorization.create!(
-  playlist_id: rand(1..14),
-  user_id: rand(2..10),
-  status: "Guest",
-  )
-end
-
-
 Playlist.create!(
   name: "Views From The 6",
   description: "Drake's Mixtape",
@@ -152,5 +143,13 @@ counter = 0
   playlist_id: counter,
   user_id: 1,
   status: "Host",
+  )
+end
+
+20.times do
+  Authorization.create!(
+  playlist_id: rand(1..4),
+  user_id: rand(2..10),
+  status: "Guest",
   )
 end
