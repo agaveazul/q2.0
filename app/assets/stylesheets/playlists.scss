@@ -4,6 +4,7 @@
 $player-white: #e8e8ec;
 $nav-grey: rgba(35, 35, 44, 0.39);
 
+
 .back-button {
   width: 100%;
   color: black;
@@ -355,10 +356,6 @@ button.downvote.btn.darken-2 {
   font-size: smaller;
 }
 
-.delete-song {
-  font-size: small;
-}
-
 .user_info {
   float: right;
   padding-right: 20px;
@@ -367,14 +364,14 @@ button.downvote.btn.darken-2 {
 
 .buttons {
     position: absolute;
-    right: 60px;
-    bottom: 13px;
+    right: 7%;
+    bottom: 11%;
 }
 
 .heart {
     position: absolute;
     right: 20px;
-    bottom: 20px;
+    bottom: 11px;
 }
 
 .nav_bar {
@@ -429,36 +426,52 @@ button.downvote.btn.darken-2 {
     display: block;
     position: inherit;
     right: 0;
-    bottom: 0;
+    bottom: -4px;
   }
 
   button.upvote, button.downvote {
     position: relative;
   }
 
-  i.material-icons {
-    position: absolute;
-    bottom: 0px;
-    right: 17px;
+  .delete-song i {
+      position: absolute;
+      top: -2px;
+      right: 7px;
   }
+  //
+  // a.delete-song {
+  //   position: absolute;
+  //   left: 57%;
+  //   top: 56%;
+  //   width: 20%;
+  //   height: 30px;
+  //   padding: 0px 0px 5px 6px;
+  //   color: white;
+  //   font-size: 10px;
+  // }
 
-  a.delete-song {
-    position: absolute;
-    left: 57%;
-    top: 56%;
-    width: 20%;
-    height: 30px;
-    padding: 0px 0px 5px 6px;
-    color: white;
-    font-size: 10px;
+  a.btn-flat.delete-song {
+      position: absolute;
+      color: white;
+      opacity: 0.7;
+      // left: 45%;
+      height: 30px;
+      top: 60px;
+      right: 56px;
+      padding: 16px;
   }
 
   .song-in-queue.played a.delete-song, .song-in-queue.playing a.delete-song  {
-    top: 36%;
+    top: 48%;
+    right: 55px;
   }
 
   .song-in-queue.que {
     height: 7rem;
+  }
+
+  .song-in-queue.played, .song-in-queue.playing {
+    height: 5rem;
   }
 
   // 4 Star Playlists
@@ -469,6 +482,13 @@ button.downvote.btn.darken-2 {
   .public-que .heart {
     bottom: 4px;
   }
+
+  // span.buttons {
+  //   display: inline-block;
+  //   position: relative;
+  //   left: 39%;
+  //   bottom: 9%;
+  // }
 
 }
 
@@ -541,6 +561,18 @@ button.downvote.btn.darken-2 {
 }
 
 @media (min-width: 600px) and (max-width: 999px) {
+  a.btn-flat.delete-song {
+    position: relative;
+    color: white;
+    opacity: 0.7;
+    left: 5%;
+  }
+
+  a.btn-flat.delete-song:hover {
+    color: white;
+    opacity: 1;
+  }
+
  .search-container {
    width: 84.95%;
  }
@@ -650,6 +682,18 @@ button.downvote.btn.darken-2 {
 }
 
 @media (min-width: 1000px) {
+  a.btn-flat.delete-song {
+    position: relative;
+    color: white;
+    opacity: 0.7;
+    left: 5%;
+  }
+
+  a.btn-flat.delete-song:hover {
+    color: white;
+    opacity: 1;
+  }
+
  .search-container {
    width: 70%;
  }
