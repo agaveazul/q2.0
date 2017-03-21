@@ -10,7 +10,7 @@ User.destroy_all
 Playlist.destroy_all
 SuggestedSong.destroy_all
 Authorization.destroy_all
-Votes.destroy_all
+Vote.destroy_all
 
 
 User.create!(
