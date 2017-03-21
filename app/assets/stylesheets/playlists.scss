@@ -266,7 +266,7 @@ input#search {
   background-size: cover;
 }
 
-#playlist-title, #playlist-update-title, #join-title {
+#playlist-update-title, #join-title {
   font-size: 60px;
 }
 
@@ -468,6 +468,10 @@ button.downvote.btn.darken-2 {
    padding: 2rem 3rem;
  }
 
+ #playlist-title {
+   font-size: 46px;
+ }
+
  .viewable-screen-front {
    height: 80vh;
  }
@@ -534,6 +538,10 @@ button.downvote.btn.darken-2 {
 @media (min-width: 600px) and (max-width: 999px) {
  .search-container {
    width: 84.95%;
+ }
+
+ #playlist-title {
+   font-size: 60px;
  }
 
  .viewable-screen-front {
@@ -643,6 +651,10 @@ button.downvote.btn.darken-2 {
 @media (min-width: 1000px) {
  .search-container {
    width: 70%;
+ }
+
+ #playlist-title {
+   font-size: 60px;
  }
 
  .viewable-screen-front {
