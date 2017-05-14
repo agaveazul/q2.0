@@ -1,3 +1,9 @@
+<div class="user-profile">
+  <% provide(:title, @user.first_name) %>
+  <%= gravatar_for @user %>
+  <%= @user.first_name %>
+</div>
+
 <div class="buttons-user party-buttons">
   <div><%= link_to "Host a Party", new_playlist_path, class: 'btn parties host-button' %></div>
   <div><%= link_to "Join a Party", join_path, class: 'btn parties join-button' %></div>

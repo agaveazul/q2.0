@@ -3,8 +3,7 @@ Rails.application.routes.draw do
 
   root 'sessions#frontpage'
   resources :sessions, only: [:new, :create, :destroy]
-  get '/sessions/view/:id', to: 'sessions#view', as: 'view_public_playlist' 
-
+  get '/sessions/view/:id', to: 'sessions#view', as: 'view_public_playlist'
   get '/playlists/:id/playlist_broadcast', to: 'playlists#playlist_broadcast', as: 'playlist_broadcast'
   get '/playlists/:id/next_song', to: 'playlists#next_song', as: 'next_song'
   get '/playlists/:id/guestlist', to: 'playlists#guestlist', as: 'guestlist'
@@ -18,6 +17,7 @@ Rails.application.routes.draw do
   post '/playlists/add_guest', to: 'playlists#add_guest', as: 'add_guest'
   post 'playlists/:id/update_authorization', to: 'playlists#update_authorization', as: 'update_authorization'
   post '/playlists/:id/update_publicity', to: 'playlists#update_publicity', as: 'update_publicity'
+  resources :account_activations, only: [:edit]
 
   mount ActionCable.server => '/cable'
   get '/auth/deezer/callback', to: 'sessions#frontpage'

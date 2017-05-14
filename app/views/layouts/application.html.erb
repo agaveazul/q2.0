@@ -36,9 +36,8 @@
     <!-- error messages for any flash notices or alerts anywhere -->
       <!-- ERROR MESSAGES IN ERROR.md -->
       <div class="container">
-
-    <%= yield %>
-
+        <%= yield %>
+        <%= debug(params) if Rails.env.development? %>
     </div>
     <footer>
       <p class="footer">© 2017 Q , Justin C. Stephen H. Richard S. Akshit S. Theresa S.</p>
