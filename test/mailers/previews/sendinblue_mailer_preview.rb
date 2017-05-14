@@ -1,6 +1,13 @@
-# Preview all emails at http://localhost:3000/rails/mailers/sendinblue_mailer
 class SendinblueMailerPreview < ActionMailer::Preview
-  def account_confirmation_email
-    SendinblueMailer.account_confirmation_email(User.first)
+
+  #http://localhost:3000/rails/mailers/Sendinblue_Mailer/account_activation
+  def account_activation
+    SendinblueMailer.account_activation
   end
+
+  #http://localhost:3000/rails/mailers/SendinblueMailer/password_reset
+  def password_reset
+    SendinblueMailer.password_reset
+  end
+
 end

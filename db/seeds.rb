@@ -18,6 +18,8 @@ User.create!(
   email: "bit@maker.com",
   password: "password",
   password_confirmation: "password",
+  activated: true,
+  activated_at: Time.zone.now
 )
 
 9.times do
@@ -27,6 +29,8 @@ User.create!(
     email: Faker::Internet.free_email,
     password: 'password',
     password_confirmation: 'password',
+    activated: true,
+    activated_at: Time.zone.now
   )
 end
 
