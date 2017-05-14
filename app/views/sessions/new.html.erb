@@ -14,8 +14,15 @@
     <%= label_tag :password %><br />
     <%= password_field_tag :password %>
   </div>
+  <div class="field input-field">
+    <%= check_box_tag :remember_me, 1, true %>
+    <%= label_tag :remember_me %><br /><br />
+  </div>
   <button class="btn login-session" id="login-button" type="submit" name="action">LOG IN</button>
 </div>
 
+<div>
+  New User? <%= link_to "Sign up now!", new_user_path %>
+</div>
 
 <% end %>

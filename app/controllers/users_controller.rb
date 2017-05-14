@@ -24,9 +24,9 @@ class UsersController < ApplicationController
 
   def index
   end
-
+  
   def show
-    @user = User.find(session[:user_id])
+    @user = User.find_by(id: session[:user_id])
     hosted_auths = Authorization.where(user_id: session[:user_id], status: "Host")
     @hosted = []
     hosted_auths.each do |auth|
