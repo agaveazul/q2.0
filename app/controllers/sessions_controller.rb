@@ -19,22 +19,28 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
-      if user.activated?
-        log_in user
-        params[:remember_me] == '1' ? remember(user) : forget(user)
-        session[:user_id] = user.id
-        redirect_to user
-      else
-        message = "Account not activated. "
-        message += "Check your email for the activation link."
-        flash[:warning] = message
-        redirect_to root_url
-      end
+    if request.env['omniauth.auth']
+      user = User.create_with_omniauth(request.env['omniauth.auth'])
+      session[:user_id] = user.id
+      redirect_to user_path(user.id)
     else
-      flash.now[:danger] = "Invalid email or password!"
-      render "new"
+      user = User.find_by(email: params[:email])
+      if user && user.authenticate(params[:password])
+        if user.activated?
+          log_in user
+          params[:remember_me] == '1' ? remember(user) : forget(user)
+          session[:user_id] = user.id
+          redirect_to user
+        else
+          message = "Account not activated. "
+          message += "Check your email for the activation link."
+          flash[:warning] = message
+          redirect_to root_url
+        end
+      else
+        flash.now[:danger] = "Invalid email or password!"
+        render "new"
+      end
     end
   end
 

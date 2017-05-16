@@ -109,6 +109,11 @@ GEM
     omniauth-deezer (0.3.0)
       faraday
       omniauth (>= 1.1.0)
+    omniauth-facebook (4.0.0)
+      omniauth-oauth2 (~> 1.2)
+    omniauth-oauth2 (1.4.0)
+      oauth2 (~> 1.0)
+      omniauth (~> 1.2)
     pg (0.18.4)
     pry (0.10.4)
       coderay (~> 1.1.0)
@@ -212,6 +217,7 @@ DEPENDENCIES
   oauth2
   omniauth
   omniauth-deezer
+  omniauth-facebook
   pg (~> 0.18.1)
   pry-rails
   puma (~> 3.0)

@@ -20,7 +20,6 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
 
-
   def downcase_email
     self.email = email.downcase
   end
@@ -72,6 +71,18 @@ class User < ApplicationRecord
 
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
+  end
+
+  def self.create_with_omniauth(auth)
+    where(provider: auth['provider'], uid: auth['uid']).first_or_initialize.tap do |user|
+      user.email = "#{auth['uid']}@#{auth['provider']}.com"
+      user.password = auth['uid']
+      user.first_name = auth['info']['first_name']
+      user.last_name = auth['info']['last_name']
+      user.oauth_token = auth['credentials']['token']
+      user.oauth_expires_at = Time.at(auth['credentials']['expires_at'])
+      user.save!
+    end
   end
 
 end
