@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/search/', to: 'playlists#search', as: 'search'
   get 'password_resets/new'
 
   get 'password_resets/edit'
