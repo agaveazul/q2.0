@@ -225,13 +225,12 @@ input#search {
 }
 
 .playlist-details {
-  background-color: rgba(0,0,0,0.8);
   height: 3.2rem;
   line-height: 2.5em;
   width: 99.9%;
 }
 .playlist-name {
-  color: white;
+  color: black;
   font-weight: bold;
   display: inline-block;
   padding-left: 1rem;
@@ -247,7 +246,8 @@ input#search {
 
 .playlist-code {
   display: inline-block;
-  color: white;
+  color: black;
+  width: 117%;
 }
 
 #make-public {
@@ -263,8 +263,8 @@ input#search {
 }
 
 .main-body {
-  background: url('https://static.pexels.com/photos/195280/pexels-photo-195280.jpeg') center center fixed no-repeat;
-  background-size: cover;
+  // background: url('https://static.pexels.com/photos/195280/pexels-photo-195280.jpeg') center center fixed no-repeat;
+  // background-size: cover;
 }
 
 #playlist-update-title, #join-title {
@@ -386,7 +386,6 @@ button.downvote.btn.darken-2 {
 
 @media (max-width: 480px) {
   .playlist-code {
-    display: block;
     text-align: center;
   }
 
@@ -429,9 +428,7 @@ button.downvote.btn.darken-2 {
 }
 
   .playlist-details {
-    text-align: center;
     height: 100%;
-    line-height: 20px;
   }
 
   span.guestlist-playlist {
@@ -862,4 +859,37 @@ html{
 li.guest{
   height: 3rem;
   line-height: 2.75rem;
+}
+
+.playlist_nav_bar{
+  position: relative;
+  background-color: white;
+  margin: 0;
+}
+
+.logo{
+  position: absolute;
+  top: -2%;
+  left: 45%;
+}
+
+.fa-user {
+  position: absolute;
+  left: 85%;
+  bottom: -5px;
+  color: black;
+}
+
+.playlist-art-container{
+  background-image: url('pool.jpeg');
+  width: 34%;
+  height: 100px;
+  margin: 8%;
+  display: inline-block;
+}
+
+.playlist-top-desc {
+  display: inline-block;
+  width: 45%;
+  margin-left: -20px;
 }

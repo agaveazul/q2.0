@@ -9,8 +9,14 @@
 
   <div>
   <div class="playlist-details">
-  <div class="playlist-name">&nbsp<%= @playlist_q.name %>&nbsp</div><div class="playlist-description">&nbsp<%= @playlist_q.description %>&nbsp</div>
-  <div class="playlist-code">&nbsp Access Code: <%=@playlist_q.access_code%></div> <% if @access == "Host" || @access == "Guest" %>
+  <div class="playlist-top">
+    <div class="playlist-art-container"></div>
+    <div class="playlist-top-desc">
+      <div class="playlist-name"><%= @playlist_q.name %></div>
+      <div class="playlist-host"> Host:&nbsp<%= User.find(Authorization.where(playlist_id: @playlist_q.id).where(status: 'Host')[0].user_id).first_name %>&nbsp<%= User.find(Authorization.where(playlist_id: @playlist_q.id).where(status: 'Host')[0].user_id).last_name %></div>
+      <div class="playlist-code">&nbsp Invite others with: <%=@playlist_q.access_code%></div> <% if @access == "Host" || @access == "Guest" %>
+    </div>
+</div>
   <% if @access == "Host" %>
 
   <span class="guestlist-playlist"><a class="waves-effect waves-light btn cyan darken-4" href='#modal1'>Guest List</a></span>
@@ -26,8 +32,8 @@
 
   </div>
 
-<div id="d_player"></div>
-<div id="dz-root"></div>
+<!-- <div id="d_player"></div>
+<div id="dz-root"></div> -->
 
 
   <script type="text/javascript">

@@ -16,21 +16,25 @@
 
 
 
-    <nav class='nav_bar'>
+    <nav class='playlist_nav_bar'>
+      <i class="large material-icons">reorder</i>
+      <span class="logo">
         <%= link_to root_path do %>
-          <%= image_tag("Q.png") %>
+          <%= image_tag("new_q_logo.png") %>
         <% end %>
+      </span>
+
+        <i class="fa fa-user fa-3x" aria-hidden="true"></i>
+    </nav>
+
       <p class="user_info">
         <% if current_user %>
 
-        <%= link_to current_user.first_name, user_path(session[:user_id]) %><span class="nav-pipe"> | <span class="delete_user_id hidden"><%= session[:user_id] %></span></span>
-
-        <%= link_to "Log out", session_path(session[:user_id]), method: :delete %>
+        <%# link_to current_user.first_name, user_path(session[:user_id]) %> <span class="delete_user_id hidden"><%= session[:user_id] %></span>
         <% else %>
         <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
         <% end %>
       </p>
-    </nav>
 
     <!-- error messages for any flash notices or alerts anywhere -->
         <% if flash.now[:alert] && flash.now[:alert].class == Array %>
@@ -52,8 +56,6 @@
         <% elsif flash.now[:notice] %>
         <p id="notice"><%= flash.now[:notice] %></p>
         <% end %>
-
-      <div class="container">
 
     <%= yield %>
 
