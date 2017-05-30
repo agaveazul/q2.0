@@ -226,7 +226,7 @@ input#search {
 
 .playlist-details {
   height: 3.2rem;
-  line-height: 2.5em;
+  // line-height: 2.5em;
   width: 99.9%;
 }
 .playlist-name {
@@ -248,6 +248,11 @@ input#search {
   display: inline-block;
   color: black;
   width: 117%;
+  margin-top: 10%;
+}
+
+.playlist-host {
+  margin-left: 3%;
 }
 
 #make-public {
@@ -867,29 +872,46 @@ li.guest{
   margin: 0;
 }
 
-.logo{
+.logo {
   position: absolute;
-  top: -2%;
-  left: 45%;
+  top: 6%;
+  left: 44%;
+}
+
+.logo img {
+  height: 37px;
+  width: 37px;
 }
 
 .fa-user {
   position: absolute;
-  left: 85%;
-  bottom: -5px;
+  left: 87%;
+  bottom: -11px;
   color: black;
+  font-size: 225%;
 }
 
 .playlist-art-container{
   background-image: url('pool.jpeg');
-  width: 34%;
-  height: 100px;
-  margin: 8%;
+  width: 30%;
+  height: 90px;
+  margin: 6%;
   display: inline-block;
 }
 
 .playlist-top-desc {
   display: inline-block;
   width: 45%;
-  margin-left: -20px;
+  margin-left: -10px;
+  position: absolute;
+  top: 20px;
+}
+
+.playlist-top {
+  position: relative;
+}
+
+.playlist_nav_bar > i.material-icons {
+  display: inline;
+  font-size: 2.5rem;
 }
