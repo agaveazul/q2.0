@@ -228,13 +228,15 @@ input#search {
   height: 3.2rem;
   // line-height: 2.5em;
   width: 99.9%;
+  position: relative;
 }
 .playlist-name {
   color: black;
-  font-weight: bold;
+  font-weight: normal;
   display: inline-block;
   padding-left: 1rem;
   margin: 0.25rem;
+  font-size: 1.5rem;
 }
 
 .playlist-description {
@@ -325,9 +327,10 @@ iframe {
   padding: 10px 1rem;
   line-height: 1.5;
   // background: linear-gradient(to left, #bfbfc0, rgb(248, 248, 249));
-  color: $player-white;
+  color: black;
   overflow: hidden;
   position: relative;
+  background-color: white;
 }
 
 .upvote, .downvote {
@@ -349,7 +352,7 @@ button.downvote.btn.darken-2 {
 }
 
 .played {
-  background-color: rgba(232, 232, 236, 0.4);
+  // background-color: rgba(232, 232, 236, 0.4);
 }
 
 .song-list {
@@ -358,7 +361,7 @@ button.downvote.btn.darken-2 {
 };
 
 .added-by {
-  font-size: smaller;
+  // font-size: smaller;
 }
 
 .user_info {
@@ -375,8 +378,14 @@ button.downvote.btn.darken-2 {
 
 .heart {
     position: absolute;
-    right: 20px;
-    bottom: 11px;
+    right: 19%;
+    bottom: 0%;
+    color: deeppink;
+    font-size: 1.5rem;
+}
+
+.fa-heart {
+  font-size: 1.5rem !important;
 }
 
 .nav_bar {
@@ -387,6 +396,14 @@ button.downvote.btn.darken-2 {
 .btn-flat {
   padding: 0 15px;
   color: white;
+}
+
+.song-details {
+  display: inline-block;
+  max-width: 60%;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  margin-left: 8%;
 }
 
 @media (max-width: 480px) {
@@ -437,15 +454,17 @@ button.downvote.btn.darken-2 {
   }
 
   span.guestlist-playlist {
-    width: 50%;
   }
 
   .guestlist-playlist {
-    float: none;
+    // float: none;
   }
 
   #make-public {
     float: none;
+    position: absolute;
+    top: 138px;
+    left: 10px;
   }
 
   .playlist-name {
@@ -460,52 +479,64 @@ button.downvote.btn.darken-2 {
   //vote
   .buttons {
     display: block;
-    position: inherit;
-    right: 0;
-    bottom: -4px;
+    position: absolute;
+    right: 2%;
+    top: -2%;
   }
 
   button.upvote, button.downvote {
-    position: relative;
+    // position: relative;
+    // top: -42px;
+    // left: 160px;
   }
 
   .delete-song i {
-      position: absolute;
-      top: -2px;
-      right: 7px;
+      // position: absolute;
+      // top: -2px;
+      // right: 7px;
+      color: red;
   }
 
   a.btn-flat.delete-song {
       position: absolute;
-      color: white;
+      // color: white;
       opacity: 0.7;
       // left: 45%;
       height: 30px;
-      top: 60px;
-      right: 56px;
-      padding: 16px;
+      bottom: 5%;
+      right: -5%;
+      font-size: 1.7rem;
+      // padding: 16px;
   }
 
   .song-in-queue.played a.delete-song, .song-in-queue.playing a.delete-song  {
-    top: 48%;
-    right: 55px;
+    // top: 53%;
+    // right: 8px;
   }
 
   .song-in-queue.que {
-    height: 7rem;
+    // height: 7rem;
   }
 
   .song-in-queue.played, .song-in-queue.playing {
-    height: 5rem;
+    // height: 5rem;
   }
 
   // 4 Star Playlists
   .song-in-queue.public-que {
-      height: 4rem;
+      // height: 4rem;
   }
 
   .public-que .heart {
     bottom: 4px;
+  }
+
+  .upvote > .material-icons {
+    font-size: 2.3rem;
+  }
+
+  .downvote > .material-icons {
+    font-size: 2.3rem;
   }
 
   // span.buttons {
@@ -514,6 +545,10 @@ button.downvote.btn.darken-2 {
   //   left: 39%;
   //   bottom: 9%;
   // }
+
+  .btn-flat i {
+    font-size: 2rem !important;
+  }
 
 }
 
@@ -848,7 +883,8 @@ html{
 .guestlist-playlist {
   float: right;
   opacity: 0.85;
-  margin: 0.25rem;
+  margin-right: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .guestlist-playlist:hover {
@@ -897,6 +933,7 @@ li.guest{
   height: 90px;
   margin: 6%;
   display: inline-block;
+  border-radius: 0.3rem;
 }
 
 .playlist-top-desc {
@@ -904,7 +941,7 @@ li.guest{
   width: 45%;
   margin-left: -10px;
   position: absolute;
-  top: 20px;
+  top: 15px;
 }
 
 .playlist-top {

@@ -81,17 +81,17 @@ $('document').ready(function(){
             }
 
             var span = $('<span>').attr('class',"buttons");
-            var buttonUp = $('<button>').attr('type',"button").attr('name','button').attr('class','upvote btn waves-effect waves-light blue lighten-2');
-            var buttonDown = $('<button>').attr('type',"button").attr('name','button').attr('class','downvote btn waves-effect waves-light red lighten-2');
+            var buttonUp = $('<button>').attr('type',"button").attr('name','button').attr('class','upvote waves-effect waves-light lighten-2');
+            var buttonDown = $('<button>').attr('type',"button").attr('name','button').attr('class','downvote waves-effect waves-light lighten-2');
 
             data[3].forEach(function(vote) {
               if ((vote.suggestedsong_id === song.id) && (vote.user_id === userId)){
                 if (vote.status === "up"){
-                  $(buttonUp).addClass('btn-flat darken-2');
+                  $(buttonUp).addClass(' darken-2');
 
                 }
                 else {
-                  $(buttonDown).addClass('btn-flat darken-2');
+                  $(buttonDown).addClass(' darken-2');
 
                 }
                 }
@@ -108,22 +108,23 @@ $('document').ready(function(){
         var iconHeart = $('<i>').attr('class','fa fa-heart').attr('style','font-size:12px');
         var netVote = $('<span>').attr('class','netvote').attr('id',song.id).html(song.net_vote);
 
-        var heart = $(spanHeart).append(netVote).append(" ").append(iconHeart);
+        var heart = $(spanHeart).append(iconHeart).append(" ").append(netVote);
 
 
 
         var votes = $(span).append(upButton).append(" ").append(downButton);
-        var divSong = $(divContainer).html(song.name + ' - ' + song.artist);
+        var songSpan = $('<div>').addClass('song-details').html(song.name + ' - ' + song.artist);
+        var divSong = $(divContainer).append(songSpan);
         var spanAdd = $('<span>').html("<br/>" + ' Added By: ' + song.user_name).addClass('added-by');
         var div_replace = $(divSong).append(spanAdd)
 
         if (song.playlist_id > 4) {
 
           if ((data[2] === userId) && (song.status != "playing")) {
-            $(div_replace).append('<a class="btn-flat waves-effect waves-light amber accent-4 delete-song"><i class="material-icons">delete</i></a>')
+            $(div_replace).append('<a class="btn-flat waves-effect waves-light accent-4 delete-song"><i class="material-icons">delete</i></a>')
           }
           else if ((song.user_id === userId) && song.status === "que") {
-            $(div_replace).append('<a class="btn-flat waves-effect waves-light amber accent-4 delete-song"><i class="material-icons">delete</i></a>')
+            $(div_replace).append('<a class="btn-flat waves-effect waves-light accent-4 delete-song"><i class="material-icons">delete</i></a>')
           }
 
           if (data[4].public == false) {
